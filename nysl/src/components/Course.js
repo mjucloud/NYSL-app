@@ -1,0 +1,42 @@
+import { hasConflict , getCourseTerm } from '../utilities/time.js';
+export const Course = ({ course, selected, setSelected }) => {
+  const isSelected = selected.includes(course);
+  const isDisabled = !isSelected && hasConflict(course, selected);
+  const style = {
+    backgroundColor: isDisabled? 'lightgrey' : isSelected ? 'lightgreen' : 'white'
+  };
+  console.log(course.meets.split(' '));
+  const meets = course.meets.split(' ');
+  return (
+    <div className="card m-1 p-2" 
+      style={style}
+      onClick={isDisabled ? null : () =>  setSelected(toggle(course, selected))}>
+      <div className="card-body">
+        <div className="card-title">{ getCourseTerm(course) } CS { getCourseNumber(course) }</div>
+        <div className="card-text">{ course.title }</div>
+        <div className="card-text">Meets: { meets[1] } { getFullDayNames(meets[0].split(/(?=[A-Z])/)).join('/') }</div>
+      </div>
+    </div>
+  );
+};
+
+const getCourseNumber = course => (
+  course.id.slice(1, 4));
+
+  const toggle = (x, lst) => (
+    lst.includes(x) ? lst.filter(y => y !== x) : [x, ...lst]
+  );
+
+  const getFullDayNames = days => {
+    const daysMap = {
+      M: 'Monday',
+      Tu: 'Tuesday',
+      W: 'Wednesday',
+      Th: 'Thursday',
+      F: 'Friday',
+      S: 'Saturday',
+      U: 'Sunday',
+    };
+  
+    return days.map(day => daysMap[day] || day);
+  };
