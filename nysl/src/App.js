@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from 'react';
+
 import { CourseList } from './components/CourseList.js';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { useData , database } from './utilities/firebase.js';
+import { ref } from 'firebase/database'
+import { useDatabaseValue } from "@react-query-firebase/database"
 
 const Banner = ({ title }) => (
   <h1>{title}</h1>);
@@ -35,19 +38,17 @@ const addScheduleTimes = schedule => ({
   courses: mapValues(addCourseTimes, schedule.courses)
 });
 
-const fetchSchedule = async () => {
-  const url = 'https://courses.cs.northwestern.edu/394/data/cs-courses.php'; 
-  const response = await fetch(url);
-  if (!response.ok) throw response;
-  return addScheduleTimes(await response.json());
-};
+
 
 
 
 const Main = () => {
-  const { data: schedule, isLoading, error } = useQuery('schedule', fetchSchedule);
-
-  if (isLoading) {
+  
+  const [schedule, loading, error] = useData('//schedule', addScheduleTimes);
+  console.log([schedule, loading, error])
+  console.log(ref(database, '//schedule'))
+  if (loading) {
+    
     return <div>Loading...</div>;
   }
 
@@ -57,7 +58,7 @@ const Main = () => {
 
   return (
     <div className="container">
-      <Banner title="Northside Youth Soccer League" />
+      <Banner title={schedule.title} />
       {schedule && <CourseList courses={schedule.courses} />}
     </div>
   );
@@ -85,6 +86,12 @@ export default App;
     U: 'Sunday',
   };
   return daysMap[day] || day;
+};
+const fetchSchedule = async () => {
+  const url = 'https://courses.cs.northwestern.edu/394/data/cs-courses.php'; 
+  const response = await fetch(url);
+  if (!response.ok) throw response;
+  return addScheduleTimes(await response.json());
 };
 
 const Course = ({ course }) => (
