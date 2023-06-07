@@ -1,11 +1,11 @@
-import { getCourseTerm } from '../utilities/time.js';
+
 import React, { useState } from 'react';
 import { Course } from './Course.js'
 
 export const CourseList = ({ courses }) => {
   const [term, setTerm] = useState('Spring');
   const [selected, setSelected] = useState([]);
-  const termCourses = Object.values(courses).filter(course => term === getCourseTerm(course));
+  const termCourses = Object.values(courses).filter(course => term === course.term);
  return (
   <>
    <TermSelector term={term} setTerm={setTerm}/> 

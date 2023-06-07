@@ -1,4 +1,4 @@
-import { hasConflict , getCourseTerm } from '../utilities/time.js';
+import { hasConflict } from '../utilities/time.js';
 export const Course = ({ course, selected, setSelected }) => {
   const isSelected = selected.includes(course);
   const isDisabled = !isSelected && hasConflict(course, selected);
@@ -12,7 +12,7 @@ export const Course = ({ course, selected, setSelected }) => {
       style={style}
       onClick={isDisabled ? null : () =>  setSelected(toggle(course, selected))}>
       <div className="card-body">
-        <div className="card-title">{ getCourseTerm(course) } CS { getCourseNumber(course) }</div>
+        <div className="card-title">{ course.term } CS {course.number }</div>
         <div className="card-text">{ course.title }</div>
         <div className="card-text">Meets: { meets[1] } { getFullDayNames(meets[0].split(/(?=[A-Z])/)).join('/') }</div>
       </div>
@@ -20,8 +20,6 @@ export const Course = ({ course, selected, setSelected }) => {
   );
 };
 
-const getCourseNumber = course => (
-  course.id.slice(1, 4));
 
   const toggle = (x, lst) => (
     lst.includes(x) ? lst.filter(y => y !== x) : [x, ...lst]

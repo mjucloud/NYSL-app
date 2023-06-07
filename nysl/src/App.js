@@ -2,10 +2,10 @@
 import { CourseList } from './components/CourseList.js';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-import { useData , database } from './utilities/firebase.js';
-import { ref } from 'firebase/database'
-import { useDatabaseValue } from "@react-query-firebase/database"
+import { QueryClient, QueryClientProvider } from "react-query";
+import { useData } from './utilities/firebase.js';
+// import { ref , getDatabase } from 'firebase/database'
+//import { useDatabaseValue } from "@react-query-firebase/database"
 
 const Banner = ({ title }) => (
   <h1>{title}</h1>);
@@ -45,8 +45,8 @@ const addScheduleTimes = schedule => ({
 const Main = () => {
   
   const [schedule, loading, error] = useData('//schedule', addScheduleTimes);
-  console.log([schedule, loading, error])
-  console.log(ref(database, '//schedule'))
+ //const dataplease = addScheduleTimes(schedule)
+
   if (loading) {
     
     return <div>Loading...</div>;
@@ -54,7 +54,9 @@ const Main = () => {
 
   if (error) {
     return <div>Error: {error.message}</div>;
-  }
+  } 
+  
+  //console.log(dataplease)
 
   return (
     <div className="container">
