@@ -3,8 +3,11 @@ import React, { useState } from 'react';
 import { Course } from './Course.js'
 
 export const CourseList = ({ courses }) => {
-  const [term, setTerm] = useState('Spring');
-  const [selected, setSelected] = useState([]);
+  const [term, setTerm] = useState('Fall');
+  let [selected, setSelected] = useState([]);
+ // if (selected.some(course => course !== courses[course.id])) {
+ //   setSelected([])
+ // };
   const termCourses = Object.values(courses).filter(course => term === course.term);
  return (
   <>

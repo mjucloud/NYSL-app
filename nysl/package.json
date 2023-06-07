@@ -11,10 +11,13 @@
     "database": "^0.0.2",
     "firebase": "^9.22.1",
     "firebase-tools": "^12.3.0",
+    "git": "^0.1.5",
+    "git-tools": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-query": "^3.39.3",
+    "react-router-dom": "^6.12.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },

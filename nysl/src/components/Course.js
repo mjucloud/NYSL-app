@@ -1,16 +1,19 @@
 import { hasConflict } from '../utilities/time.js';
+import { useNavigate } from "react-router-dom";
 export const Course = ({ course, selected, setSelected }) => {
-  const isSelected = selected.includes(course);
-  const isDisabled = !isSelected && hasConflict(course, selected);
+  let navigate = useNavigate();
+  let isSelected = selected.includes(course);
+  let isDisabled = !isSelected && hasConflict(course, selected);
   const style = {
-    backgroundColor: isDisabled? 'lightgrey' : isSelected ? 'lightgreen' : 'white'
+    backgroundColor: isSelected ? 'lightgreen' : isDisabled ? 'lightgrey' :  'white'
   };
-  console.log(course.meets.split(' '));
+
   const meets = course.meets.split(' ');
   return (
     <div className="card m-1 p-2" 
       style={style}
-      onClick={isDisabled ? null : () =>  setSelected(toggle(course, selected))}>
+      onClick={isDisabled ? null : () =>  setSelected(toggle(course, selected))}
+      onDoubleClick={() => navigate('/edit', { state: course })}>
       <div className="card-body">
         <div className="card-title">{ course.term } CS {course.number }</div>
         <div className="card-text">{ course.title }</div>

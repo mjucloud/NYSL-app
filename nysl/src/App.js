@@ -4,17 +4,22 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useData } from './utilities/firebase.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EditForm from './EditForm';
 // import { ref , getDatabase } from 'firebase/database'
 //import { useDatabaseValue } from "@react-query-firebase/database"
 
 const Banner = ({ title }) => (
-  <h1>{title}</h1>);
+  <h1 onClick={handleTitleClick}>{title}</h1>);
 
+  const handleTitleClick = () => {
+    window.location.reload();
+  };
 
 
 
 const meetsPat = /^ *((?:M|Tu|W|Th|F)+) +(\d\d?):(\d\d) *[ -] *(\d\d?):(\d\d) *$/;
-const timeParts = meets => {
+export const timeParts = meets => {
   const [match, days, hh1, mm1, hh2, mm2] = meetsPat.exec(meets) || [];
   return !match ? {} : {
     days,
@@ -44,35 +49,44 @@ const addScheduleTimes = schedule => ({
 
 const Main = () => {
   
-  const [schedule, loading, error] = useData('//schedule', addScheduleTimes);
+  const [schedule, loading, error] = useData('/schedule', addScheduleTimes);
  //const dataplease = addScheduleTimes(schedule)
-
+ 
   if (loading) {
     
     return <div>Loading...</div>;
   }
-
+console.log([schedule, loading, error])
   if (error) {
     return <div>Error: {error.message}</div>;
   } 
   
-  //console.log(dataplease)
 
   return (
     <div className="container">
       <Banner title={schedule.title} />
-      {schedule && <CourseList courses={schedule.courses} />}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CourseList courses={ schedule.courses } />} />
+          <Route path="/edit" element={ <EditForm /> } />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => {
+  
+ return (
+  <>
   <QueryClientProvider client={queryClient}>
     <Main />
   </QueryClientProvider>
-);
+  </>
+  )
+};
 
 export default App;
 

@@ -55,7 +55,7 @@ export const useData = (path, transform) => {
       // Unsubscribe the event listener
       off(databaseRef, "value", handleValue);
     };
-  },[]);
+  },);
 
   return [data, isLoading, error];
 };
@@ -64,25 +64,3 @@ export const setData = (path, value) => (
   set(ref(database, path), value)
 );
 
-
-
-/*
- const usedata = (path, transform) => {
-  const { data, isLoading, error } = useDatabaseValue(path, ref(database, path), { subscribe: true });
-  const value = (!isLoading && !error && transform) ? transform(data) : data;
-  console.log(data)
-  console.log(isLoading)
-  console.log(error)
-  return [ value, isLoading, error ];
-};
-export const useData = (path, transform) => {
-  const database = getDatabase();
-  const dataRef = ref(database, path);
-
-  const { data, isLoading, error } = useDatabaseValue(dataRef, {
-    subscribe: true,
-    transform: transform,
-  });
-
-  return [data, isLoading, error];
-}*/
