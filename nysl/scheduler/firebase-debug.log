@@ -1,0 +1,73 @@
+[debug] [2023-05-28T19:04:44.738Z] ----------------------------------------------------------------------
+[debug] [2023-05-28T19:04:44.741Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Julia\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-05-28T19:04:44.742Z] CLI Version:   12.2.1
+[debug] [2023-05-28T19:04:44.743Z] Platform:      win32
+[debug] [2023-05-28T19:04:44.743Z] Node Version:  v18.16.0
+[debug] [2023-05-28T19:04:44.753Z] Time:          Sun May 28 2023 21:04:44 GMT+0200 (hora de verano de Europa central)
+[debug] [2023-05-28T19:04:44.753Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-28T19:04:44.759Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-05-28T19:04:44.835Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-28T19:04:44.835Z] > authorizing via signed-in user (julia.jmsouza@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Julia\OneDrive\Área de Trabalho\develop\NYSL_site\scheduler
+
+[debug] [2023-05-28T19:04:45.213Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-05-28T19:04:45.214Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-05-28T19:05:11.004Z] > refreshing access token with scopes: []
+[debug] [2023-05-28T19:05:11.007Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-28T19:05:11.007Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-28T19:05:11.395Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-05-28T19:05:11.395Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-28T19:05:11.410Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-05-28T19:05:12.093Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-05-28T19:05:12.094Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project nysl-app-23 (NYSL App) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2023-05-28T19:05:17.148Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com [none]
+[debug] [2023-05-28T19:05:17.148Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/nysl-app-23
+[debug] [2023-05-28T19:05:18.248Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com 200
+[debug] [2023-05-28T19:05:18.248Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com [omitted]
+[warn] !  database: missing required API firebasedatabase.googleapis.com. Enabling now... 
+[debug] [2023-05-28T19:05:18.249Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com:enable [none]
+[debug] [2023-05-28T19:05:18.250Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com:enable x-goog-quota-user=projects/nysl-app-23
+[debug] [2023-05-28T19:05:19.882Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com:enable 200
+[debug] [2023-05-28T19:05:19.883Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com:enable [omitted]
+[debug] [2023-05-28T19:05:29.891Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com [none]
+[debug] [2023-05-28T19:05:29.891Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/nysl-app-23
+[debug] [2023-05-28T19:05:30.730Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com 200
+[debug] [2023-05-28T19:05:30.730Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/nysl-app-23/services/firebasedatabase.googleapis.com [omitted]
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2023-05-28T19:05:30.753Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nysl-app-23 [none]
+[debug] [2023-05-28T19:05:31.051Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nysl-app-23 200
+[debug] [2023-05-28T19:05:31.051Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nysl-app-23 {"projectId":"nysl-app-23","projectNumber":"784199603135","displayName":"NYSL App","name":"projects/nysl-app-23","resources":{"hostingSite":"nysl-app-23"},"state":"ACTIVE","etag":"1_e8690204-1418-4515-b2d3-d1d48e65fc49"}
+[debug] [2023-05-28T19:10:24.064Z] >>> [apiv2][query] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances databaseId=nysl-app-23-default-rtdb&validateOnly=true
+[debug] [2023-05-28T19:10:24.065Z] >>> [apiv2][body] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances {"type":"default_database"}
+[debug] [2023-05-28T19:10:24.821Z] <<< [apiv2][status] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances 200
+[debug] [2023-05-28T19:10:24.821Z] <<< [apiv2][body] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances {"name":"projects/784199603135/locations/europe-west1/instances/nysl-app-23-default-rtdb","project":"projects/784199603135","databaseUrl":"https://nysl-app-23-default-rtdb.europe-west1.firebasedatabase.app","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2023-05-28T19:10:24.823Z] >>> [apiv2][query] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances databaseId=nysl-app-23-default-rtdb
+[debug] [2023-05-28T19:10:24.823Z] >>> [apiv2][body] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances {"type":"default_database"}
+[debug] [2023-05-28T19:10:25.537Z] <<< [apiv2][status] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances 200
+[debug] [2023-05-28T19:10:25.537Z] <<< [apiv2][body] POST https://firebasedatabase.googleapis.com/v1beta/projects/nysl-app-23/locations/europe-west1/instances {"name":"projects/784199603135/locations/europe-west1/instances/nysl-app-23-default-rtdb","project":"projects/784199603135","databaseUrl":"https://nysl-app-23-default-rtdb.europe-west1.firebasedatabase.app","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
