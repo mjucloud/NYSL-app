@@ -112,7 +112,6 @@ export const GameSchedule = ({ onMatchClick }) => {
 
   return (
     <div>
-      <div className='background-image'></div>
       <div className='main-content'>
       <ShrinkHeader />
       <Slider {...sliderSettings}>

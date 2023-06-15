@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
 import Navbar from './pages/Navbar/Navbar'
-import { Banner } from './pages/components/headings';
 import { GameSchedule } from './pages/Home/game_schedule'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AboutUs from './pages/aboutUs.js';
