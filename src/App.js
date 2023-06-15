@@ -4,16 +4,16 @@ import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
-import Navbar from './components/Navbar'
-import { Banner } from './components/headings';
-import { GameSchedule } from './components/game_schedule'
+import Navbar from './pages/Navbar/Navbar'
+import { Banner } from './pages/components/headings';
+import { GameSchedule } from './pages/Home/game_schedule'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AboutUs from './components/pages/aboutUs.js';
-import GameScheduleComplete from './components/pages/gamesInfo';
-import RulesnPolicies from './components/pages/rulesNpolicies';
-import PhotoBoard from './components/pages/photoBoard';
-import SignUp from './components/pages/signUp';
-import Home from './components/pages/home';
+import AboutUs from './pages/aboutUs.js';
+import GameScheduleComplete from './pages/GamesInfo/gamesInfo';
+import RulesnPolicies from './pages/GamesInfo/rulesNpolicies';
+import PhotoBoard from './pages/photoBoard';
+import SignUp from './pages/components/signUp';
+import Home from './pages/Home/home';
 
 
 
@@ -32,7 +32,6 @@ const App = () => {
           <Route path="/games-info" element={<GameScheduleComplete />} />
           <Route path="/" element={<GameSchedule />} />
         </Routes>
-        <Banner title={'Sign Up'} />
       </div>
     </Router>
   

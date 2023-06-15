@@ -1,0 +1,163 @@
+#button{
+  --primary: #4AD136;
+}
+
+.btn{
+  padding: 8px 20px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  background-color: let(--primary);
+}
+.btn:hover {
+  padding: 6px 18px;
+  transition: all 0.3s ease-out;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 4px;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+.navbar {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  height: auto;
+  display: flex;
+  justify-content: center;
+    position: relative;
+    z-index: 1;
+    top: 0;
+  font-size: 1.2rem;
+}
+
+.navbar-logo {
+  color: #fff;
+  display: inline;
+  padding-bottom: 8px;
+  margin-left: 24px;
+  text-decoration: none;
+  font-size: 2rem;
+  width: fit-content;
+}
+
+
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  justify-content: end;
+  width: fit-content;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.nav-links {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: min-content;
+}
+.nav-links {
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  display: table;
+}
+.nav-item:hover,
+.nav-item:focus{
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+  background-color:  #4AD136;
+  border-radius: 4px;
+  transition: 300ms;
+}
+
+.fa-bars {
+  color: #fff;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .NavbarItems {
+    position: relative;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    background: #242222;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .fa-times {
+    color: #fff;
+    font-size: 2rem;
+  }
+
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    padding: 1.0rem;
+    margin: 2rem auto;
+    border-radius: 4px;
+    width: 80%;
+    background: #4AD136;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .nav-item-mobile:hover {
+    background: #fff;
+    color: #4AD136;
+    transition: 250ms;
+  }
+
+  button {
+    display: none;
+  }
+}
+#logo{
+  width: 10%;
+  margin-right: 12px;
+
+}
