@@ -1,6 +1,14 @@
-import scheduleFall from '../schedule';
+import scheduleFall from './schedule';
 import React, { useState } from 'react';
-import {ShrinkHeader} from '../headings'
+import './game_shcedule.css';
+import {ShrinkHeader, Banner} from './headings';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 console.log(scheduleFall)
 
@@ -58,35 +66,58 @@ const GameCard = ({ game }) => {
   </div>
   );
 };
- 
- const GameScheduleComplete = ({ onMatchClick }) => {
-  const [showOctoberMatches, setShowOctoberMatches] = useState(false);
-  const septemberGames = scheduleFall.Games.September;
-  const octoberGames = scheduleFall.Games.October;
-
+const CustomPrevArrow = (props) => {
+  const { onClick } = props;
   return (
-    <div>
-      <ShrinkHeader />
-      <div className='GameEvents grid'>
-        {Object.entries(septemberGames).map(([match, game]) => (
-          <GameCard key={match} game={game} />
-        ))}
-      </div>
-
-      <button onClick={() => setShowOctoberMatches(true)} disabled={!octoberGames}>
-        Show October Matches
-      </button>
-
-      {showOctoberMatches && octoberGames && (
-        <div>
-          <h2>October</h2>
-          {Object.entries(octoberGames).map(([match, game]) => (
-            <GameCard key={game.Teams} game={game} />
-          ))}
-        </div>
-      )}
+    <div className="carousel-arrow carousel-arrow-left" onClick={onClick}>
+      <FontAwesomeIcon icon={faChevronLeft} />
     </div>
   );
 };
 
-export default GameScheduleComplete;
+const CustomNextArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <div className="carousel-arrow carousel-arrow-right" onClick={onClick}>
+      <FontAwesomeIcon icon={faChevronRight} />
+    </div>
+  );
+};
+
+export const GameSchedule = ({ onMatchClick }) => {
+  const septemberGames = scheduleFall.Games.September;
+
+  const sliderSettings = {
+    dots: false, // Hide navigation dots
+    infinite: true, // Enable infinite looping
+    speed: 500, // Transition speed in milliseconds
+    slidesToShow: 3, // Number of slides to show at a time
+    slidesToScroll: 1, // Number of slides to scroll per click
+    responsive: [
+      {
+        breakpoint: 960, // Adjust settings for smaller screens
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    appendDots: (dots) => (
+      <div>
+        <ul>{dots}</ul>
+      </div>
+    ),
+  };
+
+  return (
+    <div>
+      <ShrinkHeader />
+      <Slider {...sliderSettings}>
+        {Object.entries(septemberGames).map(([match, game]) => (
+          <GameCard key={match} game={game} />
+        ))}
+      </Slider>
+    </div>
+  );
+};

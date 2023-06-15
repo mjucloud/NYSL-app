@@ -11,7 +11,8 @@ const Navbar = ()=> {
   const handleClick = () => setClick(!click);
   
   const closeMobileMenu = ()=> setClick(false);
-
+ 
+  
 
   return (
     <>
@@ -25,16 +26,15 @@ const Navbar = ()=> {
           <FontAwesomeIcon icon={click ? faTimes : faBars} />
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-          <li className='nav-item'>
-            <Link to='/about-us' className='nav-links' onClick={closeMobileMenu}>
-              About Us
+        <li className='nav-item'>
+            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              Home  
             </Link>
           </li>
           <li className='nav-item' >
             <Link to='/games-info' className='nav-links' onClick={closeMobileMenu}>
               Games
             </Link>
-            
           </li>
           <li className='nav-item'>
             <Link to='/rules-and-policies' className='nav-links' onClick={closeMobileMenu}>
@@ -47,8 +47,8 @@ const Navbar = ()=> {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/home' className='nav-links' onClick={closeMobileMenu}>
-              Home  
+            <Link to='/about-us' className='nav-links' onClick={closeMobileMenu}>
+              About Us
             </Link>
           </li>
           <li className='nav-item'>

@@ -5,3 +5,20 @@
   padding: 0;
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+.page-title {
+  background-color: #4AD136;
+  color: black;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  margin-left: 40px;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 5px;
+  height: 72px;
+  width: 80%;
+  text-align: center;
+  letter-spacing: 4px;
+}
