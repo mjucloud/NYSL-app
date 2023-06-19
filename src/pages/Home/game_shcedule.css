@@ -33,7 +33,7 @@ text-decoration-color: darkblue;
   background-color: #4AD136;
   color: black;
   font-weight: bold;
-  position: sticky; /* Change position to sticky to avoid overlapping with cards */
+  position: relative; /* Change position to sticky to avoid overlapping with cards */
   top: 0; /* Ensure the header stays at the top */
   margin-top: 24px;
   margin-bottom: 16px;
