@@ -1,0 +1,121 @@
+
+.card{
+  min-width: auto !important;
+}
+.weatherCard {
+ max-width: min-content;
+ max-height: 18rem;
+}
+.weatherIcon{
+  width: 100px;
+  height: 5rem;
+  margin-left: 9rem;
+  margin-bottom: 1rem;
+}
+.h1{
+  width: fit-content !important;
+  justify-content: start;
+}
+.detailsTitle{
+  text-align: center;
+}
+.WeatherSection{
+  display: flex;
+
+}
+.details{
+ text-align: center;
+ box-sizing: border-box;
+}
+
+.detailedInfo{
+  display: flex;
+  justify-content: end;
+  margin-left: auto;
+}
+.searchTab{
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width:60%;
+}
+.forecast {
+  height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 70%;
+}
+.forecast p {
+  margin:0;
+  width: fit-content;
+
+  box-sizing: border-box;
+}
+.forecast-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.weatherDisplay{
+  display:flex;
+}
+.details p {
+  margin:0;
+ width: fit-content;
+ margin-right:16px;
+}
+.values p {
+  width: fit-content;
+  text-align: end;
+  margin: 0;
+  font-weight: bold;
+
+}
+
+.weatherIconForecast {
+  width: 64px;
+  height: 2rem;
+  position:absolute;
+  top: 24px;
+  right: 0px;
+}
+
+.activated{
+  height: fit-content !important;
+}
+@media screen and (max-width: 767px) {
+  .weatherDisplay {
+    display: block;
+  }
+  .weatherCard {
+    width: 100%;
+  }
+  
+}
+
+.weatherDisplay-mobile {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+}
+
+.forecast-mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-desktop {
+  width: 100%;
+}
+.parent {
+  width: 100vw;
+  display: flex;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap:wrap
+}
+
+
+

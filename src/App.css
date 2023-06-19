@@ -23,3 +23,27 @@
   text-align: center;
   letter-spacing: 4px;
 }
+
+.footer{
+    background: black;
+    margin: 0;
+    font-size: 14px;
+    color: #878787;
+    height:24px;
+    font-size: smaller;
+    text-align: center;
+    overflow-x: visible;
+    bottom:0;
+    width:100%;
+    position: absolute;
+}
+.navbar {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  height: auto;
+  display: flex;
+  justify-content: center;
+    position: relative;
+    z-index: 2 ;
+    top: 0;
+  font-size: 1.2rem;
+}

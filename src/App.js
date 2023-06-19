@@ -4,17 +4,19 @@ import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
+import { CopyRightsFooter } from './pages/components/headings';
 import Navbar from './pages/Navbar/Navbar'
 import { GameSchedule } from './pages/Home/game_schedule'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AboutUs from './pages/aboutUs.js';
 import GameScheduleComplete from './pages/GamesInfo/gamesInfo';
-import RulesnPolicies from './pages/GamesInfo/rulesNpolicies';
+import RulesAndPolicies from './pages/rulesNprotocols';
 import PhotoBoard from './pages/photoBoard';
 import SignUp from './pages/components/signUp';
 import Home from './pages/Home/home';
 
 
+console.log(CopyRightsFooter)
 
 
 const queryClient = new QueryClient();
@@ -30,7 +32,9 @@ const App = () => {
         <Routes>
           <Route path="/games-info" element={<GameScheduleComplete />} />
           <Route path="/" element={<GameSchedule />} />
+          <Route path='/rules-and-policies' element={<RulesAndPolicies />} />
         </Routes>
+        
       </div>
     </Router>
   

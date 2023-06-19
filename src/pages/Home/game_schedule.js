@@ -1,14 +1,14 @@
 import scheduleFall from '../data/JSON/schedule';
 import React, { useState } from 'react';
 import './game_shcedule.css';
-import {ShrinkHeader, Banner} from '../components/headings';
+import {ShrinkHeader } from '../components/headings';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.css';
-
+import { RainSchedule } from './rain_schedule';
 
 console.log(scheduleFall)
 
@@ -112,13 +112,14 @@ export const GameSchedule = ({ onMatchClick }) => {
 
   return (
     <div>
-      <div className='main-content'>
+      <div >
       <ShrinkHeader />
       <Slider {...sliderSettings}>
         {Object.entries(septemberGames).map(([match, game]) => (
           <GameCard key={match} game={game} />
         ))}
       </Slider>
+      <RainSchedule />
       </div>
     </div>
   );

@@ -33,3 +33,11 @@ export const ShrinkHeader = () => {
   const handleTitleClick = () => {
     window.location.reload();
   };
+
+ export const CopyRightsFooter = () => (
+    
+    <footer>
+      <div className='footer'>Copy Rights & Autorization © 2021</div>
+    </footer>
+    
+  )
