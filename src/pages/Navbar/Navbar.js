@@ -20,7 +20,7 @@ const Navbar = ()=> {
       <nav className='navbar'>
         <Link to='/' className='navbar-logo'>
         <Logo />
-        Northside Youth Soccer League
+       <span className='navbar-pageTitle'><span className='navbar-pageTitle1'>Northside</span>  <span className='navbar-pageTitle2'>Youth Soccer League</span></span>
         </Link>
         <div className='menu-icon' onClick={handleClick}>
           <FontAwesomeIcon icon={click ? faTimes : faBars} />

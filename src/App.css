@@ -12,13 +12,12 @@
   color: black;
   font-weight: bold;
   margin-top: 24px;
-  margin-bottom: 16px;
   margin-left: 40px;
   justify-content: center;
   box-sizing: border-box;
-  padding: 16px;
+  padding-top: 8px;
   border-radius: 5px;
-  height: 72px;
+  height: 48px;
   width: 80%;
   text-align: center;
   letter-spacing: 4px;
@@ -35,7 +34,7 @@
     overflow-x: visible;
     bottom:0;
     width:100%;
-    position: absolute;
+    position: relative;
 }
 .navbar {
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);

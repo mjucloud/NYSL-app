@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-export const ShrinkHeader = () => {
+export const ShrinkHeader = ({ title }) => {
   const [shouldShrink, setShouldShrink] = useState(false);
-
+  
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 0.0) {
         setShouldShrink(true);
       } else {
         setShouldShrink(false);
@@ -21,18 +21,20 @@ export const ShrinkHeader = () => {
 
   return (
     <h2 className={`page-heading ${shouldShrink ? 'shrink' : ''}`}>
-      Upcoming in September
+      { title }
     </h2>
   );
 };
  /*ask why export default doesnt work properly*/
 
  export const Banner = ({ title }) => (
-  <h2 className='page-title' onClick={handleTitleClick}>{title}</h2>);
+  <div>
+  <h2 className='fw-bold mt-4 mb-1 text-center'>{title}</h2>
 
-  const handleTitleClick = () => {
-    window.location.reload();
-  };
+  </div>)
+
+
+
 
  export const CopyRightsFooter = () => (
     

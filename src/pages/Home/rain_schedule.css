@@ -34,21 +34,22 @@
   margin-left: auto;
 }
 .searchTab{
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   width:60%;
+  text-align: center;
+  margin-left: 4rem ;
+}
+.weatherContainer{
+  display: flex;
 }
 .forecast {
   height: 120px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 70%;
+  width:180px;
 }
 .forecast p {
   margin:0;
   width: fit-content;
-
   box-sizing: border-box;
 }
 .forecast-content{
@@ -57,8 +58,12 @@
   flex-direction: column;
 }
 .weatherDisplay{
-  display:flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
+
+
 .details p {
   margin:0;
  width: fit-content;
@@ -84,37 +89,28 @@
   height: fit-content !important;
 }
 @media screen and (max-width: 767px) {
-  .weatherDisplay {
-    display: block;
-  }
+
   .weatherCard {
     width: 100%;
+    margin-left: 2.5rem;
   }
-  
-}
-
-.weatherDisplay-mobile {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 1rem;
-}
-
-.forecast-mobile {
-  display: flex;
-  flex-direction: column;
-}
-
-.forecast-desktop {
-  width: 100%;
-}
-.parent {
-  width: 100vw;
-  display: flex;
-}
-
-.wrap {
-  display: flex;
-  flex-wrap:wrap
+  .forecast{
+    width: 200px;
+    height: 120px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-left: 4rem;
+  }
+  .weatherContainer{
+    display: flex;
+  }
+   .page-title{
+    height: fit-content;
+    padding-top: 4px;
+    padding-bottom: 8px;
+   }
 }
 
 

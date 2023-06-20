@@ -6,14 +6,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
 import { CopyRightsFooter } from './pages/components/headings';
 import Navbar from './pages/Navbar/Navbar'
-import { GameSchedule } from './pages/Home/game_schedule'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AboutUs from './pages/aboutUs.js';
+import AboutUs from './pages/AboutUs/aboutUs.js';
 import GameScheduleComplete from './pages/GamesInfo/gamesInfo';
-import RulesAndPolicies from './pages/rulesNprotocols';
-import PhotoBoard from './pages/photoBoard';
-import SignUp from './pages/components/signUp';
-import Home from './pages/Home/home';
+import RulesAndPolicies from './pages/RulesNPolicies/rulesNprotocols';
+import PhotoBoard from './pages/PhotoBoard/photoBoard';
+import SignUp from './pages/signUp';
+import {MainHomePage} from './pages/Home/home'
 
 
 console.log(CopyRightsFooter)
@@ -31,10 +30,11 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/games-info" element={<GameScheduleComplete />} />
-          <Route path="/" element={<GameSchedule />} />
+          <Route path="/" element={<MainHomePage />} />
           <Route path='/rules-and-policies' element={<RulesAndPolicies />} />
+          <Route path='/about-us' element={<AboutUs/>} />
         </Routes>
-        
+        <CopyRightsFooter />
       </div>
     </Router>
   

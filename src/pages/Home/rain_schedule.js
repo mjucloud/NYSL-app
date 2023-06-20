@@ -99,7 +99,7 @@ const CurrentWeather = ({ data }) => {
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 
-const Forecast = ({ data, windowWidth }) => {
+const Forecast = ({ data }) => {
   const dayInAWeek = new Date().getDay();
   const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInAWeek));
 
@@ -110,11 +110,11 @@ const Forecast = ({ data, windowWidth }) => {
   };
 
   return (
-    <div className='container parent'>
-      <div className={`col ${windowWidth <= 768 ? 'forecast-mobile' : 'forecast-desktop'}`}>
+    <div className='weatherContainer'>
+      <div>
       {data.list && data.list.slice(0, 6).map((item, idx) => (
-          <div key={idx} className='col wrap'>
-            <div className={`card text-white bg-black mb-3 forecast ${idx === selectedCard ? 'activated' : ''}`} onClick={() => handleCardClick(idx)}>
+          <div key={idx} className='forecast' >
+            <div className={`card text-white bg-black mb-3 ${idx === selectedCard ? 'activated' : ''}`} onClick={() => handleCardClick(idx)}>
               <div className="card-body">
                 <div className='forecast-content'>
                 <h5 className="card-title">{forecastDays[idx]}</h5>
@@ -204,11 +204,11 @@ export const RainSchedule = () => {
 
   return (
     <>
-      <div className="container">
+      <div>
         <Search onSearchChange={handleOnSearchChange} />
         <div className={`${windowWidth < 768 ? 'weatherDisplay-mobile' : 'weatherDisplay'}`}>
           {currentWeather && <CurrentWeather data={currentWeather} />}
-          {forecast && <Forecast data={forecast} windowWidth={windowWidth} />}
+          {forecast && <Forecast data={forecast}/>}
         </div>
       </div>
     </>

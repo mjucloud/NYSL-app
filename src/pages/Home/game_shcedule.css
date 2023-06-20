@@ -55,7 +55,6 @@ text-decoration-color: darkblue;
 
 
 
-
 /* Carousel Arrows */
 /* Carousel Arrows */
 .carousel-arrow {
@@ -84,7 +83,7 @@ text-decoration-color: darkblue;
 
 
 /* Floating Cards */
-.card {
+.gameCard {
   box-shadow: 0 4px 8px 0 rgba(65, 65, 65, 0.2);
   transition: 0.3s;
   border-radius: 5px;
@@ -110,3 +109,10 @@ text-decoration-color: darkblue;
 }
 
 
+@media screen and (max-width: 767px) {
+
+  .gameCard{
+    margin-left: 16px;
+    margin-right:16px;
+  }
+}

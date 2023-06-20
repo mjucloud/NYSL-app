@@ -1,6 +1,6 @@
 import scheduleFall from '../data/JSON/schedule';
 import React, { useState } from 'react';
-import {ShrinkHeader} from '../components/headings'
+import {ShrinkHeader, Banner} from '../components/headings'
 
 console.log(scheduleFall)
 
@@ -60,31 +60,24 @@ const GameCard = ({ game }) => {
 };
  
  const GameScheduleComplete = ({ onMatchClick }) => {
-  const [showOctoberMatches, setShowOctoberMatches] = useState(false);
   const septemberGames = scheduleFall.Games.September;
   const octoberGames = scheduleFall.Games.October;
 
   return (
-    <div>
-      <ShrinkHeader />
-      <div className='GameEvents grid'>
+    <div className='container'>
+      <ShrinkHeader className='page-title' title={'Fall Schedule'} />
+      <div className='GameEvents grid '>
+        <h2 className='h2 mt-2 mb-1 text-center fw-bold'>September</h2>
         {Object.entries(septemberGames).map(([match, game]) => (
           <GameCard key={match} game={game} />
         ))}
       </div>
-
-      <button onClick={() => setShowOctoberMatches(true)} disabled={!octoberGames}>
-        Show October Matches
-      </button>
-
-      {showOctoberMatches && octoberGames && (
         <div>
-          <h2>October</h2>
+          <Banner title={'October'} />
           {Object.entries(octoberGames).map(([match, game]) => (
             <GameCard key={game.Teams} game={game} />
           ))}
         </div>
-      )}
     </div>
   );
 };

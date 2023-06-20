@@ -1,7 +1,7 @@
 import scheduleFall from '../data/JSON/schedule';
 import React, { useState } from 'react';
 import './game_shcedule.css';
-import {ShrinkHeader } from '../components/headings';
+import {Banner, ShrinkHeader } from '../components/headings';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -56,7 +56,7 @@ const GameCard = ({ game }) => {
 
 
   return (
-    <div className={`card ${isMapVisible ? 'active' : ''}`}>
+    <div className={`card gameCard ${isMapVisible ? 'active' : ''}`}>
     <div className='card-body'>
       <h5 className='card-title'>{Date}</h5>
       <h6 className='card-subtitle'>Teams: {Teams}</h6>
@@ -112,14 +112,13 @@ export const GameSchedule = ({ onMatchClick }) => {
 
   return (
     <div>
-      <div >
-      <ShrinkHeader />
+      <div className='container'>
+      <ShrinkHeader className='page-title' title={'Upcoming in September'}/>
       <Slider {...sliderSettings}>
         {Object.entries(septemberGames).map(([match, game]) => (
           <GameCard key={match} game={game} />
         ))}
       </Slider>
-      <RainSchedule />
       </div>
     </div>
   );
