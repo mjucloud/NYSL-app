@@ -8,33 +8,37 @@ import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.css';
-import { RainSchedule } from './rain_schedule';
+import { useNavigate } from 'react-router-dom';
+import { useDoubleTap } from 'use-double-tap';
+
 
 console.log(scheduleFall)
 
 
-const LocationDetails = ({ locationRef, onMapToggle }) => {
+export const LocationDetails = ({ locationRef, isInitiallyVisible }) => {
   const location = scheduleFall.Location[locationRef];
-  const [isMapVisible, setIsMapVisible] = useState(false);
+  const [isMapVisible, setIsMapVisible] = useState(isInitiallyVisible);
 
   const toggleMapVisibility = () => {
     setIsMapVisible(!isMapVisible);
-    onMapToggle(!isMapVisible);
   };
+
   if (location) {
     return (
       <>
-        <div className='hover-highlight'>
-        <p className='font-weight-bold card-text' onClick={toggleMapVisibility}>
-          Location: {location.Name}
-        </p>
-        <p className='card-text mapLink' onClick={toggleMapVisibility}>
-          {location.Details}
-        </p>
+        <div className="hover-highlight">
+          <p className="font-weight-bold card-text" onClick={toggleMapVisibility}>
+            Location: {location.Name}
+          </p>
+          <p className="card-text mapLink" onClick={toggleMapVisibility}>
+            {location.Details}
+          </p>
         </div>
-        <div className={`map-container ${isMapVisible ? '' : 'd-none'}`}>
-          <iframe title='Google Maps' src={location.gMaps} width='100%' height='300'></iframe>
-        </div>
+        {isMapVisible && (
+          <div className={`map-container ${isMapVisible ? '' : 'd-none'}`}>
+            <iframe title="Google Maps" src={location.gMaps} width="100%" height="300"></iframe>
+          </div>
+        )}
       </>
     );
   }
@@ -42,30 +46,32 @@ const LocationDetails = ({ locationRef, onMapToggle }) => {
   return null;
 };
 
-const GameCard = ({ game }) => {
+export const GameCard = ({ id, game }) => {
   const { Teams, Date, Time, Location } = game;
-  const [isMapVisible, setIsMapVisible] = useState(false);
 
-  const toggleMapVisibility = () => {
-    setIsMapVisible(!isMapVisible);
+  const navigate = useNavigate();
+  const gameDetailUrl = `/game/${id}`;
+  const handleCardDoubleClick = () => { 
+    navigate(gameDetailUrl);
   };
-
-  const handleMapToggle = (mapVisible) => {
-    setIsMapVisible(mapVisible);
-  };
-
+  const handleCardDoubleTap = useDoubleTap((e) => {
+     navigate(gameDetailUrl);
+  })
+ 
 
   return (
-    <div className={`card gameCard ${isMapVisible ? 'active' : ''}`}>
-    <div className='card-body'>
-      <h5 className='card-title'>{Date}</h5>
-      <h6 className='card-subtitle'>Teams: {Teams}</h6>
-      <p className='card-text'>Time: {Time}</p>
-      <LocationDetails locationRef={Location} onMapToggle={handleMapToggle} />
+    <div className={`card gameCard`} onDoubleClick={handleCardDoubleClick} {...handleCardDoubleTap}>
+      <div className='card-body'>
+        <h5 className='card-title'>{Date}</h5>
+        <h6 className='card-subtitle'>Teams: {Teams}</h6> 
+        <p className='card-text'>Time: {Time}</p>
+        <LocationDetails locationRef={Location} isInitiallyVisible={false}/>
+      </div>
     </div>
-  </div>
   );
 };
+
+
 const CustomPrevArrow = (props) => {
   const { onClick } = props;
   return (
@@ -91,7 +97,8 @@ export const GameSchedule = ({ onMatchClick }) => {
     dots: false, // Hide navigation dots
     infinite: true, // Enable infinite looping
     speed: 500, // Transition speed in milliseconds
-    slidesToShow: 3, // Number of slides to show at a time
+    slidesToShow: 3, // Number of slides to show at a time 
+    swipe: true,
     slidesToScroll: 1, // Number of slides to scroll per click
     responsive: [
       {
@@ -112,11 +119,11 @@ export const GameSchedule = ({ onMatchClick }) => {
 
   return (
     <div>
-      <div className='container'>
+      <div>
       <ShrinkHeader className='page-title' title={'Upcoming in September'}/>
       <Slider {...sliderSettings}>
         {Object.entries(septemberGames).map(([match, game]) => (
-          <GameCard key={match} game={game} />
+          <GameCard key={match} id={match} game={game} />
         ))}
       </Slider>
       </div>

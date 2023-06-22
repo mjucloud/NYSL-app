@@ -24,7 +24,9 @@ text-decoration-color: darkblue;
   cursor: pointer;
 }
 
-
+.map-container{
+  margin-top: 1rem;
+}
 .active{
  height: 600px !important;
 }
@@ -74,11 +76,13 @@ text-decoration-color: darkblue;
 }
 
 .carousel-arrow-left {
-  left: 4px;
+  left: 0px;
+  margin-right: 1rem;
 }
 
 .carousel-arrow-right {
-  right: 4px;
+  right: 0px;
+  margin-left: 1rem;
 }
 
 
@@ -87,11 +91,12 @@ text-decoration-color: darkblue;
   box-shadow: 0 4px 8px 0 rgba(65, 65, 65, 0.2);
   transition: 0.3s;
   border-radius: 5px;
+  margin-top: 1rem;
   margin-bottom: 20px;
   transition: height 0.3s;
-  height: 300px; /* Set the initial height of the cards */
-  margin-left:32px;
-  margin-right: 32px;
+  height: fit-content; /* Set the initial height of the cards */
+  margin-left:16px;
+  margin-right: 16px;
   min-width: 60%;
 }
 /* Carousel Container */
@@ -112,7 +117,7 @@ text-decoration-color: darkblue;
 @media screen and (max-width: 767px) {
 
   .gameCard{
-    margin-left: 16px;
-    margin-right:16px;
+    margin-left: 10px;
+    margin-right:10px;
   }
 }

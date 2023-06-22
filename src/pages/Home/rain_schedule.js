@@ -6,7 +6,7 @@ import { faSun, faRain } from '@fortawesome/free-solid-svg-icons';
 import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './rain_schedule.css';
-
+import { Row, Card,Col } from 'react-bootstrap';
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
@@ -40,8 +40,6 @@ const Search = ({ onSearchChange }) => {
 
 
   }
-  console.log(loadOptions)
-  console.log(search)
 
   return (
     <AsyncPaginate
@@ -55,15 +53,19 @@ const Search = ({ onSearchChange }) => {
   )
 }
 
+
 const CurrentWeather = ({ data }) => {
+  
   return (
     <div>
-      <div className='card text-white bg-black mb-3 weatherCard'>
+      <div className='card text-white bg-dark mb-3 weatherCard'>
         <p className='card-header'>{data.city}</p>
         <div className='card-body'>
-          <div className='d-flex'>
+          <div className='d-flex justify-content-between'>
             <p className='card-title mr-2 fw-bold'>{data.weather[0].main}</p>
-            <FontAwesomeIcon icon={faSun} className='weatherIcon' />
+            <div className='weatherIcon'> <Icon data={data.weather[0].icon} className='weatherIcon'/>
+            </div>
+           
           </div>
 
           <div className="WeatherSection">
@@ -94,6 +96,13 @@ const CurrentWeather = ({ data }) => {
     </div>
   );
 }
+const Icon = ({data}) =>{
+  const iconPath = require(`./icons/${data}.png`)
+  console.log(iconPath)
+  return (
+    <img src={ iconPath } alt='icon' />
+  )
+}
 
 
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -109,46 +118,60 @@ const Forecast = ({ data }) => {
     setSelectedCard(idx === selectedCard ? null : idx);
   };
 
+  // Separate the data into chunks of two elements
+  const chunkedData = data.list && data.list.slice(0, 6);
+  const rows = chunkedData ? chunkedData.reduce((resultArray, item, index) => {
+    const chunkIndex = Math.floor(index / 2);
+
+    if (!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = []; // create a new chunk if it doesn't exist
+    }
+
+    resultArray[chunkIndex].push(item); // push the item into the current chunk
+
+    return resultArray;
+  }, []) : [];
+
   return (
     <div className='weatherContainer'>
-      <div>
-      {data.list && data.list.slice(0, 6).map((item, idx) => (
-          <div key={idx} className='forecast' >
-            <div className={`card text-white bg-black mb-3 ${idx === selectedCard ? 'activated' : ''}`} onClick={() => handleCardClick(idx)}>
-              <div className="card-body">
-                <div className='forecast-content'>
-                <h5 className="card-title">{forecastDays[idx]}</h5>
-                <p>{item.weather[0].main}</p>
-                <p>
-                  {Math.round(item.main.temp_max)}°C / {Math.round(item.main.temp_min)}°C
-                </p>
-                </div>
-                
-                <div className='weatherIconForecast'>
-                <FontAwesomeIcon icon={faCloudSun} />
-                </div> 
-                {selectedCard === idx && (
-                  <div className={`detailedInfo`}>
-                  <div className="details">
-                    <p className="detailsTitle">Details</p>
-                    <p>Feels like:</p>
-                    <p>Humidity:</p>
-                    <p>Wind:</p>
+      {rows.map((row, rowIndex) => (
+        <Row key={rowIndex} xs={1} md={2}>
+          {row.map((item, itemIndex) => (
+            <Col key={itemIndex} md={6}>
+              <div className={`card text-white bg-dark mb-3 forecast ${rowIndex * 2 + itemIndex === selectedCard ? 'activated' : ''}`} onClick={() => handleCardClick(rowIndex * 2 + itemIndex)}>
+                <div className="card-body">
+                  <div className='forecast-content'>
+                    <h5 className="card-title">{forecastDays[rowIndex * 2 + itemIndex]}</h5>
+                    <p>{item.weather[0].main}</p>
+                    <div className='weatherIconForecast'>
+                      <Icon data={item.weather[0].icon} />
+                    </div>
                   </div>
-                  <div className="values">
-                    <p>-</p>
-                    <p>{item.main.feels_like}°C</p>
-                    <p>{item.main.humidity}%</p>
-                    <p>{item.wind.speed} m/s</p>
-                  </div>
+                  <p>
+                    {Math.round(item.main.temp_max)}°C / {Math.round(item.main.temp_min)}°C
+                  </p>
+                  {selectedCard === rowIndex * 2 + itemIndex && (
+                    <div className={`detailedInfo`}>
+                      <div className="details">
+                        <p className="detailsTitle">Details</p>
+                        <p>Feels like:</p>
+                        <p>Humidity:</p>
+                        <p>Wind:</p>
+                      </div>
+                      <div className="values">
+                        <p>-</p>
+                        <p>{Math.round(item.main.feels_like)}°C</p>
+                        <p>{item.main.humidity}%</p>
+                        <p>{item.wind.speed} m/s</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                
-                )}
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+            </Col>
+          ))}
+        </Row>
+      ))}
     </div>
   );
 };
@@ -204,7 +227,7 @@ export const RainSchedule = () => {
 
   return (
     <>
-      <div>
+      <div className='container'>
         <Search onSearchChange={handleOnSearchChange} />
         <div className={`${windowWidth < 768 ? 'weatherDisplay-mobile' : 'weatherDisplay'}`}>
           {currentWeather && <CurrentWeather data={currentWeather} />}
