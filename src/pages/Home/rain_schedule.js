@@ -97,7 +97,7 @@ const CurrentWeather = ({ data }) => {
   );
 }
 const Icon = ({data}) =>{
-  const iconPath = require(`./icons/${data}.png`)
+  const iconPath = require(`../data/IMG/icons/${data}.png`)
   console.log(iconPath)
   return (
     <img src={ iconPath } alt='icon' />
@@ -135,7 +135,7 @@ const Forecast = ({ data }) => {
   return (
     <div className='weatherContainer'>
       {rows.map((row, rowIndex) => (
-        <Row key={rowIndex} xs={1} md={2}>
+        <Row key={rowIndex} xs={2} md={2}>
           {row.map((item, itemIndex) => (
             <Col key={itemIndex} md={6}>
               <div className={`card text-white bg-dark mb-3 forecast ${rowIndex * 2 + itemIndex === selectedCard ? 'activated' : ''}`} onClick={() => handleCardClick(rowIndex * 2 + itemIndex)}>
