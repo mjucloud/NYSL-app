@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export const ShrinkHeader = ({ title }) => {
   const [shouldShrink, setShouldShrink] = useState(false);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0.0) {
@@ -21,25 +21,25 @@ export const ShrinkHeader = ({ title }) => {
 
   return (
     <h2 className={`page-heading ${shouldShrink ? 'shrink' : ''}`}>
-      { title }
+      {title}
     </h2>
   );
 };
- /*ask why export default doesnt work properly*/
+/*ask why export default doesnt work properly*/
 
- export const Banner = ({ title }) => (
+export const Banner = ({ title }) => (
   <div>
-  <h2 className='fw-bold mt-4 mb-1 text-center'>{title}</h2>
+    <h2 className='fw-bold mt-4 mb-1 text-center'>{title}</h2>
 
   </div>)
 
 
 
 
- export const CopyRightsFooter = () => (
-    
-    <footer>
-      <div className='footer'>Copy Rights & Autorization © 2021</div>
-    </footer>
-    
-  )
+export const CopyRightsFooter = () => (
+
+  <footer>
+    <div className='footer'>Copy Rights & Autorization © 2021</div>
+  </footer>
+
+)

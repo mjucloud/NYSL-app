@@ -1,7 +1,7 @@
 import scheduleFall from '../data/JSON/schedule';
 import React, { useState } from 'react';
 import './game_shcedule.css';
-import {Banner, ShrinkHeader } from '../components/headings';
+import { Banner, ShrinkHeader } from '../components/headings';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -26,17 +26,18 @@ export const LocationDetails = ({ locationRef, isInitiallyVisible }) => {
   if (location) {
     return (
       <>
+
+        <p className="font-weight-bold card-text mb-1" onClick={toggleMapVisibility}>
+          Location: {location.Name}
+        </p>
         <div className="hover-highlight">
-          <p className="font-weight-bold card-text" onClick={toggleMapVisibility}>
-            Location: {location.Name}
-          </p>
           <p className="card-text mapLink" onClick={toggleMapVisibility}>
             {location.Details}
           </p>
         </div>
         {isMapVisible && (
           <div className={`map-container ${isMapVisible ? '' : 'd-none'}`}>
-            <iframe title="Google Maps" src={location.gMaps} width="100%" height="300"></iframe>
+            <iframe title="Google Maps" src={location.gMaps} width="100%" height="400"></iframe>
           </div>
         )}
       </>
@@ -51,21 +52,21 @@ export const GameCard = ({ id, game }) => {
 
   const navigate = useNavigate();
   const gameDetailUrl = `/game/${id}`;
-  const handleCardDoubleClick = () => { 
+  const handleCardDoubleClick = () => {
     navigate(gameDetailUrl);
   };
   const handleCardDoubleTap = useDoubleTap((e) => {
-     navigate(gameDetailUrl);
+    navigate(gameDetailUrl);
   })
- 
+
 
   return (
     <div className={`card gameCard`} onDoubleClick={handleCardDoubleClick} {...handleCardDoubleTap}>
       <div className='card-body'>
         <h5 className='card-title'>{Date}</h5>
-        <h6 className='card-subtitle'>Teams: {Teams}</h6> 
+        <h6 className='card-subtitle'>Teams: {Teams}</h6>
         <p className='card-text'>Time: {Time}</p>
-        <LocationDetails locationRef={Location} isInitiallyVisible={false}/>
+        <LocationDetails locationRef={Location} isInitiallyVisible={false} />
       </div>
     </div>
   );
@@ -96,15 +97,16 @@ export const GameSchedule = ({ onMatchClick }) => {
   const sliderSettings = {
     dots: false, // Hide navigation dots
     infinite: true, // Enable infinite looping
-    speed: 500, // Transition speed in milliseconds
+    speed: 500,
+    swipe: false, // Transition speed in milliseconds
     slidesToShow: 3, // Number of slides to show at a time 
-    swipe: true,
     slidesToScroll: 1, // Number of slides to scroll per click
     responsive: [
       {
         breakpoint: 960, // Adjust settings for smaller screens
         settings: {
           slidesToShow: 2,
+          swipe: true
         },
       },
     ],
@@ -120,12 +122,12 @@ export const GameSchedule = ({ onMatchClick }) => {
   return (
     <div>
       <div>
-      <ShrinkHeader className='page-title' title={'Upcoming in September'}/>
-      <Slider {...sliderSettings}>
-        {Object.entries(septemberGames).map(([match, game]) => (
-          <GameCard key={match} id={match} game={game} />
-        ))}
-      </Slider>
+        <ShrinkHeader className='page-title' title={'Upcoming in September'} />
+        <Slider {...sliderSettings}>
+          {Object.entries(septemberGames).map(([match, game]) => (
+            <GameCard key={match} id={match} game={game} />
+          ))}
+        </Slider>
       </div>
     </div>
   );

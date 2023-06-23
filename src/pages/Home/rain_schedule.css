@@ -1,80 +1,94 @@
-
-.weatherCard .card-title{
+.weatherCard .card-title {
   font-size: x-large;
 }
+
 .weatherCard {
- max-width: max-content;
- max-height: auto;
- margin-right:4px;
+  max-width: max-content;
+  max-height: auto;
+  margin-right: 4px;
 }
-.weatherIcon{
+
+.weatherIcon {
   width: 100px;
   height: 7rem;
   margin-left: 8rem;
   margin-bottom: 1rem;
-  margin-right: 1rem;
+  margin-right: 2rem;
 }
-.h1{
+
+.h1 {
   width: fit-content !important;
   justify-content: start;
 }
-.detailsTitle{
+
+.detailsTitle {
   text-align: center;
 }
-.WeatherSection{
+
+.WeatherSection {
   display: flex;
   justify-content: space-between;
-    flex-direction: row;
+  flex-direction: row;
 
 }
-.details{
- text-align: center;
- box-sizing: border-box;
+
+.details {
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.detailedInfo{
+.detailedInfo {
   display: flex;
   justify-content: end;
   margin-left: 2rem;
 }
-.searchTab{
+
+.searchTab {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  width:60%;
+  width: 60%;
   text-align: center;
-  margin-left: 4rem ;
+  margin-left: 4rem;
 }
-.weatherContainer{
+
+.weatherContainer {
   display: flex;
   flex-direction: column;
 }
+
 .forecast {
-  width:fit-content;
+  width: fit-content;
 }
+
 .forecast p {
-  margin:0;
+  margin: 0;
   width: fit-content;
   box-sizing: border-box;
 }
-.forecast-content{
+
+.forecast-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.weatherDisplay{
+
+.weatherDisplay {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
-
+.stickToTheWidth{
+  width:fit-content;
+}
 
 .details p {
-  margin:0;
- width: fit-content;
- margin-right:16px;
+  margin: 0;
+  width: fit-content;
+  margin-right: 16px;
 }
+
 .values p {
   width: fit-content;
   text-align: end;
@@ -87,31 +101,39 @@
   right: 0px;
 }
 
-.activated{
+.activated {
   height: fit-content !important;
 }
+
 @media screen and (max-width: 767px) {
 
   .weatherCard {
     width: 100%;
-    margin-left: 2.5rem;
+    margin-left: 0.6rem;
   }
-  .forecast{
+
+  .forecast {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
     flex-direction: column;
-    margin-left: 4rem;
+
+
   }
-  .weatherContainer{
+  
+  .detailedInfo {
+    margin-top: 1rem;
+    margin-left: 0;
+
+  }
+
+  .weatherContainer {
     display: flex;
   }
-   .page-title{
+
+  .page-title {
     height: fit-content;
     padding-top: 4px;
     padding-bottom: 8px;
-   }
+  }
 }
-
-
-
