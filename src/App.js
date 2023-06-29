@@ -12,6 +12,10 @@ import GameScheduleComplete from './pages/GamesInfo/gamesInfoPage';
 import RulesAndPolicies from './pages/RulesNPolicies/rulesNprotocols';
 import { MainHomePage } from './pages/Home/home'
 import { GameDetails } from './pages/GamesInfo/gameDeatils';
+import { AuthContextProvider} from './pages/MessageBoard/chat-auth';
+import { SignIn } from './pages/signIn';
+import ChatScreen from './pages/MessageBoard/messageBoard';
+
 
 
 console.log(CopyRightsFooter)
@@ -24,19 +28,24 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Router>
-          <div>
-            <Navbar />
-            <Routes>
-              <Route path="/games-info" element={<GameScheduleComplete />} />
-              <Route exact path="/" element={<MainHomePage />} />
-              <Route path='/game/:id' element={<GameDetails />} />
-              <Route path='/rules-and-policies' element={<RulesAndPolicies />} />
-              <Route path='/about-us' element={<AboutUs />} />
-            </Routes>
-            <CopyRightsFooter />
-          </div>
-        </Router>
+        <AuthContextProvider>
+          <Router>
+            <div>
+              <Navbar />
+              <Routes>
+                <Route path="/games-info" element={<GameScheduleComplete />} />
+                <Route exact path="/" element={<MainHomePage />} />
+                <Route path='/game/:id' element={<GameDetails />} />
+                <Route path='/rules-and-policies' element={<RulesAndPolicies />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/sign-in' element={<SignIn />} />
+                <Route path="/game/:matchId/chat" element={<ChatScreen />} />
+
+              </Routes>
+              <CopyRightsFooter />
+            </div>
+          </Router>
+        </AuthContextProvider>
       </QueryClientProvider>
     </>
   )
@@ -51,7 +60,7 @@ export default App;
   <Route path='/rules-and-policies' exact component={RulesnPolicies} />
   <Route path='/photo-board' exact component={PhotoBoard} />
   <Route path='/' exact component={Home} />
-  <Route path='/sign-up' exact component={SignUp} />
+  <Route path='/sign-in' exact component={SignIn} />
   </Routes> 
   import PhotoBoard from './pages/PhotoBoard/photoBoard';
   import SignUp from './pages/signUp';

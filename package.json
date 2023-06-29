@@ -19,6 +19,7 @@
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-fontawesome": "^1.7.1",
+    "react-google-button": "^0.7.2",
     "react-query": "^3.39.3",
     "react-router": "^6.12.1",
     "react-router-dom": "^6.12.1",

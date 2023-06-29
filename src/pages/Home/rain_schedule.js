@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { AsyncPaginate } from 'react-select-async-paginate';
-import { Geo_API_Options, Geo_API_URL, Weather_API_URL, Weather_API_KEY } from '../data/JSON/weatherAPI';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faRain } from '@fortawesome/free-solid-svg-icons';
-import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
-import '@fortawesome/fontawesome-free/css/all.css';
+import { Geo_API_Options, Geo_API_URL, Weather_API_URL, Weather_API_KEY } from '../data/weatherAPI';
 import './rain_schedule.css';
-import { Row, Card, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
@@ -58,7 +55,7 @@ const CurrentWeather = ({ data }) => {
 
   return (
     <div>
-      <div className='card text-white bg-dark mb-3 weatherCard'>
+      <div className='card text-white mb-3 weatherCard'>
         <p className='card-header'>{data.city}</p>
         <div className='card-body'>
           <div className='d-flex justify-content-between'>
@@ -97,7 +94,7 @@ const CurrentWeather = ({ data }) => {
   );
 }
 const Icon = ({ data }) => {
-  const iconPath = require(`../data/IMG/icons/${data}.png`)
+  const iconPath = require(`../../img/icons/${data}.png`)
   console.log(iconPath)
   return (
     <img src={iconPath} alt='icon' />
@@ -124,7 +121,7 @@ const Forecast = ({ data }) => {
       <Row xs={1} md={2} lg={3} className='stickToTheWidth'>
         {data.list && data.list.slice(0, 6).map((item, idx) => (
           <Col key={idx} xs={6} md={3} lg={4} >
-            <div className={`card text-white bg-dark mb-3 forecast ${idx === selectedCard ? 'activated' : ''}`} onClick={() => handleCardClick(idx)}>
+            <div className={`card text-white mb-3 forecast ${idx === selectedCard ? 'activated' : ''}`} onClick={() => handleCardClick(idx)}>
               <div className="card-body">
                 <div className='forecast-content'>
                   <h5 className="card-title">{forecastDays[idx]}</h5>

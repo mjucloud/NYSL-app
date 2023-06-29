@@ -4,14 +4,15 @@
 
 .weatherCard {
   max-width: max-content;
-  max-height: auto;
+  height: 540px;
   margin-right: 4px;
+  background-color: rgb(70, 105, 85);
 }
 
 .weatherIcon {
   width: 100px;
   height: 7rem;
-  margin-left: 8rem;
+  margin-left: 5rem;
   margin-bottom: 1rem;
   margin-right: 2rem;
 }
@@ -28,7 +29,7 @@
 .WeatherSection {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
 
 }
 
@@ -39,8 +40,9 @@
 
 .detailedInfo {
   display: flex;
-  justify-content: end;
-  margin-left: 2rem;
+  justify-content: space-around;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
 .searchTab {
@@ -54,16 +56,23 @@
 .weatherContainer {
   display: flex;
   flex-direction: column;
-}
+  
 
+}
 .forecast {
   width: fit-content;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+ background-color: rgb(70, 105, 85);
 }
 
 .forecast p {
   margin: 0;
   width: fit-content;
   box-sizing: border-box;
+
 }
 
 .forecast-content {
@@ -106,10 +115,11 @@
 }
 
 @media screen and (max-width: 767px) {
-
+ 
   .weatherCard {
     width: 100%;
     margin-left: 0.6rem;
+    height: max-content;
   }
 
   .forecast {
@@ -117,8 +127,8 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     flex-direction: column;
-
-
+   
+  
   }
   
   .detailedInfo {

@@ -1,22 +1,17 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import scheduleFall from '../data/JSON/schedule';
-import { LocationDetails } from '../Home/game_schedule';
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import scheduleFall from '../data/schedule';
+import { LocationDetails } from './game_schedule';
 import Card from 'react-bootstrap/Card';
 import { Image } from 'react-bootstrap';
-import { Row, Col } from 'react-bootstrap';
 import './gameDetails.css';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const GameDetails = () => {
   const { id } = useParams();
 
-  // Retrieve the match details based on the ID
   const match = scheduleFall.Games.September[id] || scheduleFall.Games.October[id];
 
-
-
-  // Render the match details
   if (match) {
     const { Teams, Date, Time, Location } = match;
 
@@ -25,9 +20,10 @@ export const GameDetails = () => {
     let pathTeam2 = team2.toLowerCase().trim();
     console.log(pathTeam1)
 
-    const logo1 = require(`../data/IMG/logos/${pathTeam1}.logo.png`)
-    const logo2 = require(`../data/IMG/logos/${pathTeam2}.logo.png`)
+    const logo1 = require(`../../img/logos/${pathTeam1}.logo.png`)
+    const logo2 = require(`../../img/logos/${pathTeam2}.logo.png`)
 
+    const messageBoardUrl = `/game/${id}/chat`;
 
     return (
       <Card className=' text-center'>
@@ -41,6 +37,7 @@ export const GameDetails = () => {
           </div>
           <Card.Subtitle className='mb-2 fs-3'>{Teams}</Card.Subtitle>
           <LocationDetails locationRef={Location} isInitiallyVisible={true} className="fs-2" />
+          <Link to={messageBoardUrl}>Go to Message Board</Link>
         </Card.Body>
       </Card>
     );

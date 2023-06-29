@@ -1,8 +1,8 @@
-import { GameSchedule } from "./game_schedule"
+import { GameSchedule } from "../GamesInfo/game_schedule"
 import { RainSchedule } from "./rain_schedule"
 import { Banner } from "../components/headings"
 import React from "react";
-import './game_shcedule.css'
+import '../GamesInfo/game_shcedule.css';
 
 
 const WeatherSectionIntro = () => {
@@ -15,12 +15,10 @@ const WeatherSectionIntro = () => {
   )
 }
 export const MainHomePage = () => {
-  console.log(<RainSchedule />)
   return (
-    <div className="ms-2 me-2">
+    <div className="ms-2 me-2 ">
       <GameSchedule />
       <WeatherSectionIntro />
-
       <RainSchedule />
     </div>
   )

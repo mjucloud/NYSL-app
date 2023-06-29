@@ -1,8 +1,7 @@
-import scheduleFall from '../data/JSON/schedule';
-import React, { useState } from 'react';
+import scheduleFall from '../data/schedule';
+import React from 'react';
 import { ShrinkHeader, Banner } from '../components/headings';
-import { GameCard } from '../Home/game_schedule';
-import { LocationDetails } from '../Home/game_schedule';
+import { GameCard } from './game_schedule';
 // import Accordion from 'react-bootstrap/Accordion';
 
 console.log(scheduleFall)
@@ -29,7 +28,6 @@ const GameScheduleComplete = () => {
       <div>
         <Banner title={'October'} />
         {Object.entries(octoberGames).map(([match, game]) => {
-          console.log(match)
           return (
             <GameCard key={match} game={game} id={match} />
           )
