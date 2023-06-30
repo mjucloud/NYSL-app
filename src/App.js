@@ -18,8 +18,6 @@ import ChatScreen from './pages/MessageBoard/messageBoard';
 
 
 
-console.log(CopyRightsFooter)
-
 
 const queryClient = new QueryClient();
 

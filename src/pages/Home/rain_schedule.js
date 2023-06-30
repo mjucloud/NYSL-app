@@ -95,7 +95,6 @@ const CurrentWeather = ({ data }) => {
 }
 const Icon = ({ data }) => {
   const iconPath = require(`../../img/icons/${data}.png`)
-  console.log(iconPath)
   return (
     <img src={iconPath} alt='icon' />
   )
@@ -207,7 +206,6 @@ export const RainSchedule = () => {
   }, []);
 
   console.log(currentWeather);
-  console.log(forecast);
 
   return (
     <>
