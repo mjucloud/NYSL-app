@@ -19,6 +19,29 @@
   width: fit-content;
   margin-left: 2.5rem;
 }
+.linkToMessages{
+  text-decoration: none;
+  color: black;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin-top: 24px;
+  margin-bottom: 20px;
+  background-color: #78fa64e7;
+}
+.linkToMessages:hover{
+  font-weight: bolder;
+  padding: 10px 20px;
+  
+}
+.footerLink{
+  text-decoration: none;
+  color: #515050;
+}
+.footerLink:hover{
+  color: black;
+  font-weight: bold;
+}
 
 /*
 height: auto;

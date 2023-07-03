@@ -20,7 +20,7 @@
 .hover-highlight:hover {
   font-style: italic;
   text-decoration: underline;
-  text-decoration-color: darkblue;
+  text-decoration-color: #3afb1dfc;
   cursor: pointer;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .page-heading {
-  background-color: #4AD136;
+  background-color: #78fa64e7;
   color: black;
   font-weight: bold;
   position: relative;
@@ -70,8 +70,8 @@
 
 .slick-list{
   height: auto;
-    margin: 0 auto;
-    padding: 10px;
+    margin: 0 2rem !important;
+    padding: 1rem;
     position: relative;
 }
 /* Carousel Arrows */
@@ -80,8 +80,8 @@
   position: absolute;
   top: 30%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   color: black;
   display: flex;

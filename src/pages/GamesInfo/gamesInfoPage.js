@@ -1,7 +1,7 @@
 import scheduleFall from '../data/schedule';
 import React from 'react';
 import { ShrinkHeader, Banner } from '../components/headings';
-import { GameCard } from './game_schedule';
+import { GameCard } from '../Home/game_schedule';
 // import Accordion from 'react-bootstrap/Accordion';
 
 console.log(scheduleFall)

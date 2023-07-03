@@ -2,107 +2,67 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { database, auth } from '../data/firebase';
-import './messageBoar.css';
-import { getDocs,  query, orderBy  } from 'firebase/firestore';
-
-const MessageBoard = ({ matchId, messagesData }) => {
-  const [matchMessages, setMatchMessages] = useState([]);
-
-  useEffect(() => {
-    const fetchMatchMessages = async () => {
-      try {
-        const messageRef = collection(database, 'NorthsideMessageBoard/messages', matchId);
-        const q = query(messageRef, orderBy('timeStamp', 'asc'));
-
-        const querySnapshot = await getDocs(q);
-        const messages = querySnapshot.docs.map((doc) => doc.data());
-        setMatchMessages(messages);
-      } catch (error) {
-        console.error('Error fetching match messages:', error);
-      }
-    };
-
-    fetchMatchMessages();
-  }, [matchId]);
-
-  useEffect(() => {
-    if (messagesData[matchId]) {
-      setMatchMessages((prevMessages) => [...prevMessages, messagesData[matchId]]);
-    }
-  }, [messagesData, matchId]);
-
-  if (!matchMessages.length) {
-    return <p>Loading messages...</p>;
-  }
-
-  return (
-    <div className="message-board">
-      {matchMessages.map((message, index) => (
-        <div key={index} className="message">
-          <p className="author">{message.author}</p>
-          <p className="text">{message.text}</p>
-          <p className="timestamp">{message.timeStamp?.toDate()?.toString()}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
+import './messageBoard.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
+import { getDocs, query, orderBy } from 'firebase/firestore';
+import { Image } from 'react-bootstrap';
 
 const ChatScreen = () => {
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState('');
   const { matchId } = useParams();
   const messageRef = collection(database, `NorthsideMessageBoard/messages/${matchId}`);
-  const [messagesData, setMessagesData] = useState({});
+  const [messagesData, setMessagesData] = useState([]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newMessage === "") return;
-  
-    console.log("Adding new message:", newMessage);
-  
+    if (newMessage === '') return;
+
+    console.log('Adding new message:', newMessage);
+
     try {
       const docRef = await addDoc(messageRef, {
         text: newMessage,
         timeStamp: serverTimestamp(),
         author: auth.currentUser.displayName,
+        photoURL: auth.currentUser.photoURL,
       });
-  
-      console.log("Message added with ID:", docRef.id);
-  
-      // Update the local state to include the newly added message
-      setMessagesData((prevState) => ({
-        ...prevState,
-        [matchId]: {
-          ...prevState[matchId],
-          [docRef.id]: {
-            text: newMessage,
-            timeStamp: serverTimestamp(),
-            author: auth.currentUser.displayName,
-          },
-        },
-      }));
-  
-      setNewMessage("");
+
+      console.log('Message added with ID:', docRef.id);
+
+      setNewMessage('');
+      fetchMatchMessages();
     } catch (error) {
-      console.error("Error adding message:", error);
+      console.error('Error adding message:', error);
     }
   };
-  
+
+  const fetchMatchMessages = async () => {
+    try {
+      const messageRef = collection(database, 'NorthsideMessageBoard/messages', matchId);
+      const q = query(messageRef, orderBy('timeStamp', 'asc'));
+
+      const querySnapshot = await getDocs(q);
+      const messages = querySnapshot.docs.map((doc) => doc.data());
+      setMessagesData(messages);
+    } catch (error) {
+      console.error('Error fetching match messages:', error);
+    }
+  };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (!user) {
-        console.log("User is not signed in");
-      }
-    });
-
-    return () => unsubscribe();
+    fetchMatchMessages();
   }, []);
 
+  console.log(messagesData)
+
+
+
   return (
-    <div>
+    <>
       <MessageBoard matchId={matchId} messagesData={messagesData} />
+
 
       <form className="new-message-form" onSubmit={handleSubmit}>
         <input
@@ -112,15 +72,43 @@ const ChatScreen = () => {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
         />
-        <button type="submit">Send</button>
+        <button type="submit" className='sendButton'><FontAwesomeIcon icon={faPaperPlane} /></button>
       </form>
-    </div>
+    </>
   );
 };
 
 export default ChatScreen;
 
-/* use effect  
+const MessageBoard = ({ messagesData }) => {
+
+
+  return (
+    <div className="message-board">
+      {messagesData.map((message, index) => {
+       const userImg = message.photoURL || 'https://www.pngkey.com/png/detail/114-1149847_avatar-unknown-dp.png';
+        return (
+          <div key={index} className="message">
+            <div className='userInfo'>
+              <Image src={userImg} roundedCircle className='userImg' />
+              <p className="author">{message.author}</p>
+            </div>
+            <p className="text">{message.text}</p>
+            <p className="timestamp">{message.timeStamp?.toDate()?.toString()}</p>
+          </div>
+        )
+      })}
+    </div>
+  );
+};
+
+
+/*  
+  );
+};
+<img src="https://www.pngkey.com/png/detail/114-1149847_avatar-unknown-dp.png" alt="Avatar - Unknown Dp@pngkey.com">
+
+use effect  
   const unsubscribe = auth.onAuthStateChanged((user) => {
       if (!user) {
         // User is not signed in, display a message or redirect to the sign-in page
@@ -134,6 +122,24 @@ querySnapshot.forEach((doc) => {
   console.log(`${doc.id} => ${doc.data()}`);
 });
 
+      {userLoggedIn ? (
+        <form className="new-message-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="new-message-input"
+            placeholder="Type your message..."
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+          />
+         <button type="submit" className='sendButton'><FontAwesomeIcon icon={faPaperPlane} /></button>
+        </form>
+      ) : (
+        <div className="login-message">
+          <p>Please sign in to post a message.</p>
+          <Link to="/signin">Sign In</Link>
+        </div>
+      )}
+    </div>
 
 useEffect(() => {
     const fetchMessages = async () => {
@@ -206,4 +212,15 @@ const fetchMessages = async () => {
     </div>
   );
 };
-      */
+  
+
+
+  const messageBoardRef = useRef(null);
+
+  useEffect(() => {
+    if (messageBoardRef.current) {
+      messageBoardRef.current.scrollTop = messageBoardRef.current.scrollHeight;
+    }
+  }, [messagesData]);
+  
+  */

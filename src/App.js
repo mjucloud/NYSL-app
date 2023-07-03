@@ -11,9 +11,9 @@ import AboutUs from './pages/AboutUs/aboutUs.js';
 import GameScheduleComplete from './pages/GamesInfo/gamesInfoPage';
 import RulesAndPolicies from './pages/RulesNPolicies/rulesNprotocols';
 import { MainHomePage } from './pages/Home/home'
-import { GameDetails } from './pages/GamesInfo/gameDeatils';
+import { GameDetails } from './pages/GamesInfo/gameDetails';
 import { AuthContextProvider} from './pages/MessageBoard/chat-auth';
-import { SignIn } from './pages/signIn';
+import { SignIn } from './pages/SignIn/signIn';
 import ChatScreen from './pages/MessageBoard/messageBoard';
 
 
@@ -28,7 +28,6 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <AuthContextProvider>
           <Router>
-            <div>
               <Navbar />
               <Routes>
                 <Route path="/games-info" element={<GameScheduleComplete />} />
@@ -38,10 +37,9 @@ const App = () => {
                 <Route path='/about-us' element={<AboutUs />} />
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path="/game/:matchId/chat" element={<ChatScreen />} />
-
               </Routes>
               <CopyRightsFooter />
-            </div>
+            
           </Router>
         </AuthContextProvider>
       </QueryClientProvider>

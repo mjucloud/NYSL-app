@@ -1,8 +1,8 @@
-import { GameSchedule } from "../GamesInfo/game_schedule"
+import { GameSchedule } from "./game_schedule"
 import { RainSchedule } from "./rain_schedule"
 import { Banner } from "../components/headings"
 import React from "react";
-import '../GamesInfo/game_shcedule.css';
+import './game_shcedule.css';
 
 
 const WeatherSectionIntro = () => {

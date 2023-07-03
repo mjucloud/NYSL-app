@@ -1,5 +1,6 @@
 const RulesAndPolicies = () => (
-  <div className="container">
+  <div className="container-GenInfo">
+    <h1 className="text-center text-3xl font-bold py-8">Rules & Policies </h1>
   <p className="text-muted mt-4">FIFA rules shall govern NYSL play except as modified herein.</p>
   <h3 className="h4 ">SPORTSMANSHIP</h3>
   <ul>

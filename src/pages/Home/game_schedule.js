@@ -36,7 +36,7 @@ export const LocationDetails = ({ locationRef, isInitiallyVisible }) => {
           </p>
         </div>
         {isMapVisible && (
-          <div className={`map-container ${isMapVisible ? '' : 'd-none'}`}>
+          <div className={`map-container mb-3 ${isMapVisible ? '' : 'd-none'}`}>
             <iframe title="Google Maps" src={location.gMaps} width="100%" height="400"></iframe>
           </div>
         )}

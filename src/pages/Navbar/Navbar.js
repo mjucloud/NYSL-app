@@ -17,20 +17,11 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setClick(false);
 
-  const { user, logOut } = UserAuth();
-
-  const handleSignOut = async () => {
-    try {
-      await logOut()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   return (
     <>
-
+     
       <nav className='navbar'>
+        <Greetings />
         <Link to='/' className='navbar-logo'>
           <Logo />
           <span className='navbar-pageTitle'><span className='navbar-pageTitle1'>Northside</span>  <span className='navbar-pageTitle2'>Youth Soccer League</span></span>
@@ -65,20 +56,13 @@ const Navbar = () => {
               About Us
             </Link>
           </li>
-          <li className='nav-item'>
-            {user?.displayName ? (
-
-              <Link to='/sign-in' className='nav-links' onClick={handleSignOut}>
-                Log Out
-              </Link>
-            ) : (
+          <li className='nav-item'>    
               <Link to='/sign-in' className='nav-links' onClick={closeMobileMenu}>
                 Sign In
               </Link>
-            )}
           </li>
         </ul>
-        <Greetings />
+      
       </nav>
 
     </>
@@ -87,7 +71,7 @@ const Navbar = () => {
 const Greetings = () => {
   const { user } = UserAuth();
   return (
-    <div className="greetings ms-2 mt-1">
+    <div className="greetings ms-2 mt-1 text-center">
 
       {user?.displayName && (
         <>

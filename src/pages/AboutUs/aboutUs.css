@@ -1,0 +1,7 @@
+.container-GenInfo{
+  max-width: 60%;
+  display: grid;
+  margin-right: auto;
+    margin-left: auto;
+    margin-top: 2rem;
+}

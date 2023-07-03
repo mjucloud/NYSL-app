@@ -1,0 +1,117 @@
+/* messageBoard.css */
+
+.message-board {
+  background-color: #f8f8f8; /* Message board background color */
+  padding: 10px;
+  border: 1px solid #ccc; /* Message board border */
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: grid;
+  justify-content: space-evenly;
+  margin-left: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  width: 120%;
+  height: 10rem;
+  display: grid;
+  background-color: #eeeeee;
+  justify-content: space-around;
+}
+.userImg{
+  width: 40px;
+  margin-top:16px;
+  margin-right: 8px;
+}
+.userInfo{
+  width: fit-content;
+  display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.author {
+  font-weight: bolder;
+  margin-bottom: 4px;
+  margin-top: 1rem;
+  font-size: medium;
+}
+
+.text {
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888888;
+  text-align: right;
+  margin-bottom: 0px;
+  padding: 4px 0 0 0;
+}
+
+.new-message-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.new-message-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  background-color: #f0f0f0;
+}
+
+.new-message-input:focus {
+  outline: none;
+}
+
+.sendButton {
+  padding: 10px 15px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  background-color: #78fa64e7;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.signInLink{
+  display: flex;
+  margin-bottom: 5rem;
+  text-decoration: none;
+  color: black;
+  border-radius: 20px;
+  width: 100px;
+  background-color: #78fa64e7;
+  justify-content: center;
+}
+.login-message{
+  display: grid;
+  display: grid;
+  justify-items: center;
+}
+@media screen and (max-width: 768px) {
+ 
+.message-board {
+  background-color: #f8f8f8; /* Message board background color */
+  padding: 10px;
+  border: 1px solid #ccc; /* Message board border */
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: grid;
+  justify-content: space-evenly;
+  margin-left: auto;
+}
+}
