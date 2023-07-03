@@ -1,5 +1,5 @@
 import React from "react";
-import { UserAuth } from "../MessageBoard/chat-auth";
+import { UserAuth } from "./chat-auth";
 import { GoogleButton } from "react-google-button";
 import './sigIn.css';
 
@@ -37,6 +37,7 @@ export const SignIn = () => {
         </>
       ) : (
         <div className="max-w-[240px] m-auto py-4 signInButton">
+          <p>Please Sign In to access the Message Board</p>
           <GoogleButton onClick={handleGoogleSignIn} />
         </div>
       )}

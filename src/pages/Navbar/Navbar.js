@@ -5,7 +5,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars, } from '@fortawesome/free-solid-svg-icons';
-import { UserAuth } from '../MessageBoard/chat-auth';
+import { UserAuth } from '../SignIn/chat-auth';
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -47,8 +47,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/message-board' className='nav-links' onClick={closeMobileMenu}>
-              Message Board
+            <Link to='/photo-board' className='nav-links' onClick={closeMobileMenu}>
+              Photo Board
             </Link>
           </li>
           <li className='nav-item'>

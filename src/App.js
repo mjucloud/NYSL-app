@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
@@ -12,9 +12,10 @@ import GameScheduleComplete from './pages/GamesInfo/gamesInfoPage';
 import RulesAndPolicies from './pages/RulesNPolicies/rulesNprotocols';
 import { MainHomePage } from './pages/Home/home'
 import { GameDetails } from './pages/GamesInfo/gameDetails';
-import { AuthContextProvider} from './pages/MessageBoard/chat-auth';
+import { AuthContextProvider, UserAuth} from './pages/SignIn/chat-auth';
 import { SignIn } from './pages/SignIn/signIn';
 import ChatScreen from './pages/MessageBoard/messageBoard';
+import { auth } from './firebase';
 
 
 
@@ -22,7 +23,12 @@ import ChatScreen from './pages/MessageBoard/messageBoard';
 const queryClient = new QueryClient();
 
 const App = () => {
-
+  const [isAuthenticated, set] = useState(false)
+ const loggedUser = auth.currentUser;
+ if ( loggedUser ){
+  set(true)
+ }
+ console.log(auth.currentUser)
   return (
     <>
       <QueryClientProvider client={queryClient}>

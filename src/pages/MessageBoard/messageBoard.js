@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { database, auth } from '../data/firebase';
+import { database, auth } from '../../firebase';
 import './messageBoard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
@@ -13,8 +13,8 @@ const ChatScreen = () => {
   const { matchId } = useParams();
   const messageRef = collection(database, `NorthsideMessageBoard/messages/${matchId}`);
   const [messagesData, setMessagesData] = useState([]);
-
-
+  const matchTitle = matchId
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newMessage === '') return;
@@ -55,12 +55,12 @@ const ChatScreen = () => {
     fetchMatchMessages();
   }, []);
 
-  console.log(messagesData)
 
 
 
   return (
     <>
+
       <MessageBoard matchId={matchId} messagesData={messagesData} />
 
 

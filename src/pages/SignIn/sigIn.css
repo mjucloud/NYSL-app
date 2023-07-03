@@ -6,4 +6,6 @@
     justify-items: center;
     font-size: 1.2rem;
     justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }

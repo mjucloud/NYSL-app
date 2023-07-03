@@ -1,4 +1,4 @@
-import { auth } from "../data/firebase";
+import { auth } from "../../firebase";
 import { useContext, createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider } from "firebase/auth";
 import {  signInWithRedirect, signOut, onAuthStateChanged } from "firebase/auth";
