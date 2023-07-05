@@ -104,123 +104,17 @@ const MessageBoard = ({ messagesData }) => {
 
 
 /*  
-  );
-};
-<img src="https://www.pngkey.com/png/detail/114-1149847_avatar-unknown-dp.png" alt="Avatar - Unknown Dp@pngkey.com">
 
-use effect  
-  const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (!user) {
-        // User is not signed in, display a message or redirect to the sign-in page
-        console.log("User is not signed in");
-      } 
-      
-      import { collection, getDocs } from "firebase/firestore"; 
-
-const querySnapshot = await getDocs(collection(db, "users"));
-querySnapshot.forEach((doc) => {
-  console.log(`${doc.id} => ${doc.data()}`);
-});
-
-      {userLoggedIn ? (
-        <form className="new-message-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="new-message-input"
-            placeholder="Type your message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-          />
-         <button type="submit" className='sendButton'><FontAwesomeIcon icon={faPaperPlane} /></button>
-        </form>
-      ) : (
-        <div className="login-message">
-          <p>Please sign in to post a message.</p>
-          <Link to="/signin">Sign In</Link>
-        </div>
-      )}
-    </div>
-
-useEffect(() => {
-    const fetchMessages = async () => {
-      const matchCollectionRef = collection(database, 'NorthsideMessageBoard/messages/match_1');
-      const matchQuerySnapshot = await getDocs(matchCollectionRef);
-      
-      matchQuerySnapshot.forEach(async (matchDoc) => {
-        const message1DocRef = doc(database, matchDoc.ref.path, 'message_1');
-        const message2DocRef = doc(database, matchDoc.ref.path, 'message_2');
-        
-        const message1DocSnapshot = await getDoc(message1DocRef);
-        const message2DocSnapshot = await getDoc(message2DocRef);
-        
-        console.log(`Message 1: ${message1DocSnapshot.data().text}`);
-        console.log(`Message 2: ${message2DocSnapshot.data().text}`);
-      });
-    };
-
-    fetchMessages();
-  }, []);
+ 
+ 
+ 
+ few questions  and reminders 
+ add the match title to the chat page
+ stick the new message input at the bottom of the page
+ is not working in the phone as it is in the computer, idk why
+ im not being able to open certain things and the user doesnt get authenticated properly????
+ create storage with firebase and add photos to the photo galery, get bootstrap css examples 
 
 
-  const MessageList = ({ messages }) => {
-  const { matchId } = useParams();
-  const matchMessages = messages[matchId];
-
-  if (!auth.currentUser) {
-    return <p>Please sign in to view the messages.</p>;
-  }
-
-  if (!matchMessages) {
-    return <p>No messages available for this match.</p>;
-  }
-
-  return (
-    <div className="message-list">
-      {Object.values(matchMessages).map((message, index) => (
-        <div key={index} className="message">
-          <p className="author">{message.author}</p>
-          <p className="text">{message.text}</p>
-          <p className="timestamp">{message.timestamp}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const fetchMessages = async () => {
-  const match1CollectionRef = collection(database, 'NorthsideMessageBoard', 'messages', 'match_1');
-  const message1DocRef = doc(match1CollectionRef, 'message_1');
-  const message2DocRef = doc(match1CollectionRef, 'message_2');
-
-  const message1DocSnapshot = await getDoc(message1DocRef);
-  const message2DocSnapshot = await getDoc(message2DocRef);
-
-  const matchMessages = {
-    message_1: message1DocSnapshot.data(),
-    message_2: message2DocSnapshot.data(),
-  };
-
-  return (
-    <div className="message-list">
-      {Object.values(matchMessages).map((message, index) => (
-        <div key={index} className="message">
-          <p className="author">{message.author}</p>
-          <p className="text">{message.text}</p>
-          <p className="timestamp">{message.timeStamp.toDate().toString()}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-  
-
-
-  const messageBoardRef = useRef(null);
-
-  useEffect(() => {
-    if (messageBoardRef.current) {
-      messageBoardRef.current.scrollTop = messageBoardRef.current.scrollHeight;
-    }
-  }, [messagesData]);
-  
+ 
   */

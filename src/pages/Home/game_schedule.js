@@ -73,7 +73,7 @@ export const GameCard = ({ id, game }) => {
 };
 
 
-const CustomPrevArrow = (props) => {
+export const CustomPrevArrow = (props) => {
   const { onClick } = props;
   return (
     <div className="carousel-arrow carousel-arrow-left" onClick={onClick}>
@@ -82,7 +82,7 @@ const CustomPrevArrow = (props) => {
   );
 };
 
-const CustomNextArrow = (props) => {
+export const CustomNextArrow = (props) => {
   const { onClick } = props;
   return (
     <div className="carousel-arrow carousel-arrow-right" onClick={onClick}>
@@ -112,11 +112,7 @@ export const GameSchedule = ({ onMatchClick }) => {
     ],
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
-    appendDots: (dots) => (
-      <div>
-        <ul>{dots}</ul>
-      </div>
-    ),
+   
   };
 
   return (

@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { UserAuth } from "./chat-auth";
 import { GoogleButton } from "react-google-button";
 import './sigIn.css';
+
 
 export const SignIn = () => {
   const { googleSignIn, user, logOut } = UserAuth();
@@ -22,7 +23,7 @@ export const SignIn = () => {
       console.log(error);
     }
   };
-
+  
   return (
     <div>
       <h1 className="text-center text-3xl font-bold py-8">Sign in</h1>

@@ -12,10 +12,11 @@ import GameScheduleComplete from './pages/GamesInfo/gamesInfoPage';
 import RulesAndPolicies from './pages/RulesNPolicies/rulesNprotocols';
 import { MainHomePage } from './pages/Home/home'
 import { GameDetails } from './pages/GamesInfo/gameDetails';
-import { AuthContextProvider, UserAuth} from './pages/SignIn/chat-auth';
+import { AuthContextProvider} from './pages/SignIn/chat-auth';
 import { SignIn } from './pages/SignIn/signIn';
 import ChatScreen from './pages/MessageBoard/messageBoard';
 import { auth } from './firebase';
+import PhotoBoard from './pages/PhotoBoard/photoBoard';
 
 
 
@@ -43,6 +44,7 @@ const App = () => {
                 <Route path='/about-us' element={<AboutUs />} />
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path="/game/:matchId/chat" element={<ChatScreen />} />
+                <Route path='/photo-board' element={<PhotoBoard />} />
               </Routes>
               <CopyRightsFooter />
             

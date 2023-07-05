@@ -45,11 +45,10 @@
   margin-left: 40px;
   justify-content: center;
   box-sizing: border-box;
-  padding: 16px;
+  padding: 8px 24px;
   border-radius: 5px;
-  height: 72px;
+  height: auto;
   width: max-content;
-  transition: font-size 0.3s ease-in-out;
   /* Add transition property for font size */
 }
 

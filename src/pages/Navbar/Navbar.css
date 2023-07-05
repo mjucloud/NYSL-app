@@ -16,11 +16,11 @@
 
 }
 .greetings{
-  color:black;
+  color:white;
    font-style: italic;
    display: flex;
    align-items: baseline;
-   justify-content: center;
+   justify-content: flex-start;
 }
 .navbar-logo {
   color: #fff;
@@ -53,13 +53,12 @@
   text-decoration: none;
   padding: 1rem 1.5rem;
   height: min-content;
-}
-
-.nav-links {
-  text-align: center;
+   text-align: center;
   width: 100%;
   display: table;
 }
+
+ 
 
 .nav-item:hover,
 .nav-item:focus {
@@ -105,6 +104,7 @@
  .greetings{
   width: fit-content;
   font-size: 1rem;
+  justify-content: center;
  }
   .nav-menu {
     display: flex;
@@ -131,6 +131,7 @@
     transition: all 0.5s ease;
     z-index: 1;
     margin-top: 3rem;
+    padding: 0; 
   }
 
   .navbar-pageTitle1 {
@@ -139,7 +140,7 @@
     /* Adjust the value to increase or decrease the stretching effect */
     display: inline-block;
     /* Ensure the span takes up the width of the stretched letters */
-    margin: left 0;
+    margin-left :2rem;
   }
 
   .menu-icon {
@@ -154,10 +155,9 @@
 
   .navbar-pageTitle {
     width: fit-content;
-    text-align: center;
     margin-left: 0;
     display: flex;
-    flex-wrap: wrap;
+    align-items: flex-start;
     flex-direction: column;
     transform: scaleX(1.0);
 

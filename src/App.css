@@ -5,22 +5,6 @@
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.page-title {
-  background-color: #78fa64;
-  color: black;
-  font-weight: bold;
-  margin-top: 24px;
-  margin-left: 40px;
-  justify-content: center;
-  box-sizing: border-box;
-  padding-top: 8px;
-  border-radius: 6px;
-  height: 48px;
-  width: 80%;
-  text-align: center;
-  letter-spacing: 4px;
-}
-
 .footer {
   background: black;
   margin: 0;

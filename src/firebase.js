@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import {getFirestore} from '@firebase/firestore';
+import { setPersistence , browserLocalPersistence } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,4 +24,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const database = getFirestore(app);
+export const storage = getStorage(app)
 
+setPersistence(auth, browserLocalPersistence, {
+  // Set the sameSite and secure options for the cookie
+  cookie: {
+    sameSite: "none",
+    secure: true,
+  },
+});
