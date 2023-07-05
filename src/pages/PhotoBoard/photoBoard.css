@@ -49,3 +49,7 @@
   max-height: 400px;
   object-fit: contain;
 }
+
+.photoCard{
+  margin: 24px auto;
+}

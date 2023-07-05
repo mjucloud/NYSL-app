@@ -1,36 +1,54 @@
 /* messageBoard.css */
 
-.message-board {
-  background-color: #f8f8f8; /* Message board background color */
-  padding: 10px;
-  border: 1px solid #ccc; /* Message board border */
-  border-radius: 5px;
-  margin-bottom: 20px;
-  display: grid;
-  justify-content: space-evenly;
-  margin-left: auto;
-}
+
 
 .message {
   margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-radius: 20px;
-  width: 120%;
-  height: 10rem;
+    padding: 0px 0px 16px 0px;
+    border-radius: 20px;
+    width: 60%;
+  height: auto;
   display: grid;
   background-color: #eeeeee;
   justify-content: space-around;
 }
+.messageNoMessages {
+  margin: 10px;
+  padding: 16px 0 4px 0;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  font-size: 1.4rem;
+  margin-left: 4rem;
+  display: grid;
+  background-color: #eeeeee;
+  justify-content: space-around;
+}
+.auth-user-message {
+  display: flex;
+  background-color: #e2f7fd;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 16rem;
+}
+
+.other-user-message {
+  display: flex;
+  background-color: #f3f3f3;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 16rem;
+}
 .userImg{
-  width: 40px;
+  height: 40px;
   margin-top:16px;
   margin-right: 8px;
 }
 .userInfo{
   width: fit-content;
   display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-end;
+    margin-left:0.6rem;
 }
 .author {
   font-weight: bolder;
@@ -45,6 +63,7 @@
   font-size: 1.4rem;
   margin-top: 0.6rem;
   margin-bottom: 1.2rem;
+  width: 80%;
 }
 
 .timestamp {
@@ -58,9 +77,7 @@
 .new-message-form {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-bottom: 2rem;
 }
 
 .new-message-input {
@@ -86,36 +103,59 @@
   color: #ffffff;
   cursor: pointer;
 }
+.messages-container {
+  height: 500px; /* Adjust the height to your desired value */
+  overflow-y: auto;
+}
 
-.signInLink{
-  display: flex;
-  margin-bottom: 5rem;
-  text-decoration: none;
-  color: black;
-  border-radius: 20px;
-  width: 100px;
-  background-color: #78fa64e7;
-  justify-content: center;
-}
-.login-message{
-  display: grid;
-  display: grid;
-  justify-items: center;
-}
+
 @media screen and (max-width: 768px) {
  
 .message-board {
-  background-color: #f8f8f8; /* Message board background color */
-  padding: 10px;
-  border: 1px solid #ccc; /* Message board border */
-  border-radius: 5px;
-  margin-bottom: 20px;
-  display: grid;
-  justify-content: space-evenly;
-  margin-left: auto;
+  padding: 10px;;
 }
 .message{
   height:auto;
-  width: 100%;
+  width: auto;
+  padding: 0 10px 10px 10px;
+}
+.auth-user-message {
+  display: flex;
+  background-color: #e2f7fd;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: 8rem;
+}
+.text {
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 0.6rem;
+  width: 80%;
+}
+.other-user-message {
+  display: flex;
+  background-color: #f3f3f3;
+  flex-direction: column;
+  margin-right: 8rem;
+  align-items: stretch;
+}
+.author {
+  font-weight: bolder;
+  margin: 0.6rem 0px 0.6rem 6px;
+  font-size: 1.2rem;
+
+}
+.messageNoMessages {
+  margin: 10px;
+  padding: 16px 0 4px 0;
+  border-radius: 20px;
+  width: 70%;
+  height: auto;
+  font-size: 1rem;
+  margin-left: 2rem;
+}
+.slick-dots{
+  margin: 0 1rem 2rem 3rem;
 }
 }

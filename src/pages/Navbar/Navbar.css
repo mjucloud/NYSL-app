@@ -105,6 +105,7 @@
   width: fit-content;
   font-size: 1rem;
   justify-content: center;
+  margin-top: 0px !important;
  }
   .nav-menu {
     display: flex;
@@ -122,6 +123,7 @@
 
   #logo {
     width: 20%;
+    margin-bottom: 8px;
   }
 
   .nav-menu.active {
@@ -130,7 +132,7 @@
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
-    margin-top: 3rem;
+    margin-top: 1.4rem;
     padding: 0; 
   }
 
