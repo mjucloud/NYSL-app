@@ -104,7 +104,7 @@
   cursor: pointer;
 }
 .messages-container {
-  height: 500px; /* Adjust the height to your desired value */
+  height: 400px; /* Adjust the height to your desired value */
   overflow-y: auto;
 }
 

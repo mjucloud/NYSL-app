@@ -14,7 +14,7 @@ const ImgUploadForm = ({ setImgUrl, setProgressPercent }) => {
   const [matchId, setMatchId] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault(); // prevent auto submission
 
     const file = e.target[0]?.files[0];
@@ -37,29 +37,27 @@ const ImgUploadForm = ({ setImgUrl, setProgressPercent }) => {
       (error) => {
         alert(error);
       },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-          setImgUrl(downloadUrl);
+      async () => {
+        const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
+        setImgUrl(downloadUrl);
 
           // Save additional information to Firestore
           const messageRef = collection(database, 'NorthsidePhotoBoard', 'photos', matchId);
-          addDoc(messageRef, {
-            match: matchId,
-            description: description,
-            author: auth.currentUser.displayName,
-            imageURL: downloadUrl,
-            uid: auth.currentUser.uid,
-          })
-            .then((docRef) => {
-              console.log('Message added with ID:', docRef.id);
-            })
-            .catch((error) => {
-              console.error('Error adding message:', error);
+          try {
+            const docRef = await addDoc(messageRef, {
+              match: matchId,
+              description: description,
+              author: auth.currentUser.displayName,
+              imageURL: downloadUrl,
+              uid: auth.currentUser.uid,
             });
-        });
+            console.log('Message added with ID:', docRef.id);
+          } catch (error) {
+            console.error('Error adding message:', error);
+          }
+         });
       }
-    );
-  };
+  
   // Generate match options dynamically
   const matchOptions = Array.from({ length: 17 }, (_, index) => (
     <option key={index} value={`Match ${index + 1}`}>
@@ -68,19 +66,20 @@ const ImgUploadForm = ({ setImgUrl, setProgressPercent }) => {
   ));
 
   return (
-    <form className="form" onSubmit={handleOnSubmit}>
-      <input type="file" required />
-      <select value={matchId} onChange={(e) => setMatchId(e.target.value)} required>
-        <option value="">Select a match</option>
-        {matchOptions}
-      </select>
-      <input
-        type="text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
-      />
-      <button type="submit">Upload</button>
+    <form className="img-upload-form" onSubmit={handleOnSubmit}>
+      <div className="img-upload-options">
+        <input type="file" required />
+        <select value={matchId} onChange={(e) => setMatchId(e.target.value)} required>
+          {matchOptions}
+        </select>
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Description"
+        />
+      </div>
+      <button type="submit" className="upload-button">Upload</button>
     </form>
   );
 };

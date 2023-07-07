@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { CustomNextArrow,CustomPrevArrow } from "../Home/game_schedule";
+import { CustomNextArrow, CustomPrevArrow } from "../Home/game_schedule";
 import { collection, getDocs, query } from "firebase/firestore";
 import { Card } from "react-bootstrap";
 import { database } from "../../firebase";
@@ -12,11 +12,14 @@ import "slick-carousel/slick/slick-theme.css";
 
 export const PhotoGallery = ({ setSelectedImgUrl }) => {
   const [imgList, setImgList] = useState([]);
-
+  const [selectedMatch, setSelectedMatch] = useState('Match 1');
+  const handleMatchChange = (e) => {
+    setSelectedMatch(e.target.value);
+  };
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const messageRef = collection(database, 'NorthsidePhotoBoard', 'photos', 'Match 1');
+        const messageRef = collection(database, 'NorthsidePhotoBoard', 'photos', selectedMatch);
         const q = query(messageRef);
         const querySnapshot = await getDocs(q);
 
@@ -37,7 +40,7 @@ export const PhotoGallery = ({ setSelectedImgUrl }) => {
     };
 
     fetchPhotos();
-  }, []);
+  }, [selectedMatch]);
 
   const settings = {
     dots: true,
@@ -76,18 +79,37 @@ export const PhotoGallery = ({ setSelectedImgUrl }) => {
     nextArrow: <CustomNextArrow />,
   };
 
+
+  const matchOptions = Array.from({ length: 17 }, (_, index) => (
+    <option key={index} value={`Match ${index + 1}`}>
+      Match {index + 1}
+    </option>
+  ));
+
   return (
-    <Slider {...settings}>
-      {imgList.map((imgData, index) => (
-        <Card key={index} onClick={() => setSelectedImgUrl(imgData.url)} className="photoCard">
-          <Card.Img variant="top" src={imgData.url} alt={`${index + 1}`} height={240} />
-          <Card.Body>
-            <Card.Subtitle>{imgData.match}</Card.Subtitle>
-            <Card.Text>{imgData.description}</Card.Text>
-          </Card.Body>
-        </Card>
-      ))}
-    </Slider>
+    <div>
+      {imgList.length > 0 ? (
+        <>
+      <select value={selectedMatch} onChange={handleMatchChange} className='matchSelector'>
+        {matchOptions}
+      </select>
+      <Slider {...settings}>
+         
+         { imgList.map((imgData, index) => (
+            <Card key={index} onClick={() => setSelectedImgUrl(imgData.url)} className="photoCard">
+              <Card.Img variant="top" src={imgData.url} alt={`${index + 1}`} height={240} />
+              <Card.Body>
+                <Card.Subtitle>{imgData.match}</Card.Subtitle>
+                <Card.Text>{imgData.description}</Card.Text>
+              </Card.Body>
+            </Card>
+          ))
+          }
+      </Slider>
+      </>
+      ) : (
+        <p className="text-center imgText">There aren't any pictures here yet...</p>
+      )}
+    </div>
   );
 };
-

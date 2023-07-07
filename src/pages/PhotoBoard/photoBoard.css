@@ -28,7 +28,16 @@
   max-width: 800px;
   position: relative;
 }
-
+.matchSelector{
+  word-wrap: normal;
+  width: 80%;
+  margin-left: 2.5rem;
+  margin-top: 1rem;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
 .close {
   color: #aaa;
   float: right;
@@ -52,4 +61,88 @@
 
 .photoCard{
   margin: 24px auto;
+}
+.innerbar{
+  background-color: #78fa64e7;
+  border-radius: 20px;
+  max-width: 100%;
+}
+.imgText{
+  font-size: 1.2rem;
+  color: #000;
+  padding:16px 24px;
+}
+
+.img-upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-upload-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.img-upload-options input[type="file"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.img-upload-options select,
+.img-upload-options input[type="text"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.upload-button {
+  padding: 10px 20px;
+  background-color: #71ff49;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background-color: #71ff49;
+}
+
+/* Optional: Add additional styling as per your design requirements */
+.progress-bar {
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  margin:16px;
+  overflow: hidden;
+}
+
+
+.img-upload-result {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 16px;
+}
+
+.img-upload-result img {
+  height: 100px;
+  margin-right: 10px;
+  border-radius: 20px;
+}
+
+.img-upload-result p {
+  font-size: 16px;
+  font-weight: bold;
+}
+@media screen  and (max-width: 768px) {
+  .img-upload-options{
+    flex-direction: column;
+  }
 }

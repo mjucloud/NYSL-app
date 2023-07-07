@@ -1,0 +1,16 @@
+{
+  "name": "Northside Youth Soccer League App",
+  "short_name": "NYSL",
+  "description": "Web app for Community purposed Newsletter and Social Engagement, served for the Northside Elementary' students, parents and teachers",
+  "icons": [
+    {
+      "src": "../src/img/nysl_logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff"
+}

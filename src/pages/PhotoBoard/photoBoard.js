@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { storage} from "../../firebase";
+import { auth } from "../../firebase";
 import { ImgUploadForm } from "./ImageUploadForm";
-import { getDownloadURL, listAll, ref } from "firebase/storage";
+import { onAuthStateChanged } from "firebase/auth";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./photoBoard.css";
@@ -10,37 +10,28 @@ import { PhotoGallery } from "./PhotoGallery";
 
 const PhotoBoard = () => {
   const [imgUrl, setImgUrl] = useState(null)
-  const [imgList, setImgList] = useState([]);
   const [selectedImgUrl, setSelectedImgUrl] = useState(null);
   const [progressPercent, setProgressPercent] = useState(0) //set progress tab
 
-  const storageRef = ref(storage, 'images/');
 
-  
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    setIsUserLoggedIn(!!user);
+  });
 
-  useEffect(() => {
-    listAll(storageRef).then((res) => {
-      res.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImgList((prev) => [...prev, url])
-        })
-      })
-    })
-  }, [])
+  return () => {
+    unsubscribe();
+  };
+}, []);
+
 
 
   return (
     <div className="container">
-      {!storageRef &&
-        <p>
-          Please Sign In!
-        </p>
-
-      }
       {
-        imgList &&
-        <PhotoGallery imgList={imgList} setSelectedImgUrl={setSelectedImgUrl} />
+        <PhotoGallery setSelectedImgUrl={setSelectedImgUrl} />
       }
       {
         selectedImgUrl && (
@@ -52,16 +43,19 @@ const PhotoBoard = () => {
           </div>
         )
       }
-      <ImgUploadForm setImgUrl={setImgUrl} setProgressPercent={setProgressPercent} />
+      {isUserLoggedIn && <ImgUploadForm setImgUrl={setImgUrl} setProgressPercent={setProgressPercent} />}
       {
-        !imgUrl &&
-        <div className='outerbar'>
+        !imgUrl && isUserLoggedIn && 
+        <div className='progress-bar'>
           <div className='innerbar' style={{ width: `${progressPercent}%` }}>{progressPercent}%</div>
         </div>
       }
       {
         imgUrl &&
-        <img src={imgUrl} alt='uploaded file' height={200} />
+        <div className="img-upload-result">
+          <p className="text-center">Successfully Uploaded the New Image!</p>
+        <img src={imgUrl} alt='uploaded file' height={100} />
+        </div>
       }
 
     </div>
