@@ -88,11 +88,10 @@ export const PhotoGallery = ({ setSelectedImgUrl }) => {
 
   return (
     <div>
-      {imgList.length > 0 ? (
-        <>
       <select value={selectedMatch} onChange={handleMatchChange} className='matchSelector'>
         {matchOptions}
       </select>
+      {imgList.length > 0 ? (
       <Slider {...settings}>
          
          { imgList.map((imgData, index) => (
@@ -106,7 +105,6 @@ export const PhotoGallery = ({ setSelectedImgUrl }) => {
           ))
           }
       </Slider>
-      </>
       ) : (
         <p className="text-center imgText">There aren't any pictures here yet...</p>
       )}
